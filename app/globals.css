@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-neutral-bg text-neutral-text antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+  /* Jerarquía tipográfica editorial */
+  h1, .text-display {
+    @apply font-serif font-bold tracking-tight;
+    letter-spacing: -0.02em;
+  }
+  h2, h3 {
+    @apply font-serif font-bold text-neutral-text;
+    letter-spacing: -0.01em;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+  .focus-ring-whatsapp {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2;
+  }
+  /* Underline animado para links */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 h-px w-0 bg-current transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Gradiente animado tipo mesh/liquid para heroes */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .bg-gradient-animated {
+    background: linear-gradient(
+      135deg,
+      #fdf4f3 0%,
+      #fce8e6 25%,
+      #f3f4f6 50%,
+      #fce8e6 75%,
+      #fdf4f3 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-shift 12s ease-in-out infinite;
+  }
+}

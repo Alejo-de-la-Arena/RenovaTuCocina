@@ -1,0 +1,102 @@
+'use client';
+
+import Link from 'next/link';
+import { Mail, MapPin, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Container from '@/components/ui/Container';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+
+const footerLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/proyectos', label: 'Proyectos' },
+  { href: '/como-trabajamos', label: 'Cómo trabajamos' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+export default function Footer() {
+  const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl('Hola, me gustaría consultar sobre renovación de cocinas.') : null;
+
+  return (
+    <footer className="bg-neutral-text text-white">
+      <Container>
+        <div className="py-18 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block" aria-label="MDV Proyectos - Inicio">
+              <img
+                src="/assets/brand/mdv-logo-footer.webp"
+                alt="MDV Proyectos"
+                className="h-8 md:h-16 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
+                width={140}
+                height={36}
+              />
+            </Link>
+            <p className="mt-5 text-neutral-400 text-sm leading-relaxed max-w-xs">
+              Renovación de cocinas a medida. Diseño, fabricación e instalación en zona norte y CABA.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider opacity-90">Navegación</h3>
+            <ul className="space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-neutral-400 hover:text-white transition-colors text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider opacity-90">Contacto</h3>
+            <ul className="space-y-4 text-sm text-neutral-400">
+              <li className="flex items-center gap-3">
+                <MapPin className="w-4 h-4 shrink-0 text-primary-400" />
+                Zona Norte, Buenos Aires
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 shrink-0 text-primary-400" />
+                (011) 1234-5678
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-4 h-4 shrink-0 text-primary-400" />
+                info@mdvproyectos.com
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider opacity-90">¿Consultas?</h3>
+            {waUrl ? (
+              <motion.a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 w-full md:w-auto px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-whatsapp shadow-soft focus-ring-whatsapp"
+                whileHover={{ scale: 1.03, boxShadow: '0 6px 20px rgba(37, 211, 102, 0.3)' }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'tween', duration: 0.2 }}
+              >
+                <WhatsAppIcon className="w-4 h-4 shrink-0" />
+                Escribinos por WhatsApp
+              </motion.a>
+            ) : (
+              <p className="text-neutral-500 text-sm">Configurar NEXT_PUBLIC_WA_NUMBER</p>
+            )}
+          </div>
+        </div>
+
+        <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-neutral-500 text-sm">
+            © {new Date().getFullYear()} MDV Proyectos. Todos los derechos reservados.
+          </p>
+        </div>
+      </Container>
+    </footer>
+  );
+}
