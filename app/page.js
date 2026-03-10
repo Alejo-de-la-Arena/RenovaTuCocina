@@ -239,7 +239,7 @@ export default function HomePage() {
                     <span key={j} className="text-primary">★</span>
                   ))}
                 </div>
-                <p className="text-white/95 mb-4">"{t.texto}"</p>
+                <p className="text-white/95 mb-4">{t.texto}</p>
                 <p className="font-medium text-white">{t.nombre}</p>
                 <p className="text-sm text-dark-muted">{t.zona}</p>
               </Card>
