@@ -44,6 +44,21 @@ module.exports = {
           muted: '#9ca3af',
           border: '#374151',
         },
+        // Editorial premium: fondos cálidos y terracota refinado
+        warm: {
+          50: '#faf8f6',
+          100: '#f5f1ed',
+          200: '#ebe4dc',
+          300: '#ddd2c4',
+          400: '#c4b5a0',
+        },
+        terracotta: {
+          DEFAULT: '#96291c',
+          light: '#b83d2e',
+          muted: '#c45c4f',
+          soft: '#fdf4f3',
+          dark: '#7d2218',
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

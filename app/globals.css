@@ -60,4 +60,15 @@
     background-size: 200% 200%;
     animation: gradient-shift 12s ease-in-out infinite;
   }
+
+  /* Editorial: secciones con aire */
+  .section-tight {
+    @apply py-14 md:py-20;
+  }
+  .section-normal {
+    @apply py-18 md:py-24;
+  }
+  .section-spacious {
+    @apply py-20 md:py-28 lg:py-32;
+  }
 }
