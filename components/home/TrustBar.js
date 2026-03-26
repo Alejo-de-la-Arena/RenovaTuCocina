@@ -15,7 +15,7 @@ export default function TrustBar() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.5 }}
-      className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/80"
+      className="flex flex-wrap justify-start sm:justify-center gap-x-5 sm:gap-x-8 gap-y-2 text-sm text-white/80"
       role="list"
     >
       {TRUST_ITEMS.map((item, i) => (

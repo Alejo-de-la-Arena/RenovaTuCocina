@@ -52,7 +52,7 @@ export default function HeroPremium({
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 w-full pb-24 pt-32 md:pb-32 md:pt-40">
+      <div className="relative z-10 w-full pb-14 pt-28 md:pb-32 md:pt-40">
         <Container className="pointer-events-auto">
           <motion.div
             className="max-w-2xl"
@@ -60,14 +60,14 @@ export default function HeroPremium({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: easing }}
           >
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-[1.08] tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 md:mb-6 leading-[1.08] tracking-tight max-w-[14ch]">
               Transformamos tu cocina.
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 md:mb-8 max-w-xl leading-relaxed">
               Proyecto integral: diseño, fabricación e instalación. Resultados reales, proceso claro.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 md:mb-10">
               {ctaRenovar}
               {ctaDesdeCero}
             </div>
@@ -77,7 +77,7 @@ export default function HeroPremium({
                 type="button"
                 onClick={() => setShowAfter((a) => !a)}
                 className={cn(
-                  'inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors',
+                  'inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors min-h-[40px]',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-lg px-2 py-1'
                 )}
                 aria-pressed={!showAfter}
@@ -99,7 +99,7 @@ export default function HeroPremium({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.4 }}
-            className="mt-12 md:mt-16"
+            className="mt-8 md:mt-16"
           >
             <TrustBar />
           </motion.div>

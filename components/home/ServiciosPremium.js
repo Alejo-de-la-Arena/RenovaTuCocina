@@ -61,7 +61,7 @@ export default function ServiciosPremium() {
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl(selected.mensaje) : null;
 
   return (
-    <section id="renovar" className="relative bg-neutral-text py-20 md:py-28 overflow-hidden">
+    <section id="renovar" className="relative bg-neutral-text py-16 md:py-28 overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -74,7 +74,7 @@ export default function ServiciosPremium() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          className="text-center mb-14 md:mb-18"
+          className="text-center mb-10 md:mb-18"
         >
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight leading-tight">
             Cómo querés renovar
@@ -85,7 +85,7 @@ export default function ServiciosPremium() {
         </motion.div>
 
         {/* Selector tipo cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-12 md:mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-4 mb-8 md:mb-16">
           {SERVICIOS.map((s) => {
             const isSelected = selected.id === s.id;
             return (
@@ -94,7 +94,7 @@ export default function ServiciosPremium() {
                 type="button"
                 onClick={() => setSelected(s)}
                 className={cn(
-                  'relative rounded-2xl overflow-hidden text-left p-5 md:p-6 transition-all duration-300',
+                  'relative rounded-2xl overflow-hidden text-left p-4 sm:p-5 md:p-6 transition-all duration-300 min-h-[96px]',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-text',
                   isSelected
                     ? 'bg-primary ring-2 ring-primary-400 ring-offset-2 ring-offset-neutral-text shadow-lg'
@@ -135,7 +135,7 @@ export default function ServiciosPremium() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
-            className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start"
+            className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start"
           >
             <div className="lg:col-span-2 relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-white/15 bg-white/5">
               <Image
@@ -146,7 +146,7 @@ export default function ServiciosPremium() {
                 className="object-cover"
               />
             </div>
-            <div className="lg:col-span-3 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-8 md:p-10">
+            <div className="lg:col-span-3 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-10">
               <p className="text-white/60 text-sm font-medium uppercase tracking-wider mb-2">
                 {selected.tipo}
               </p>
@@ -168,7 +168,7 @@ export default function ServiciosPremium() {
               {waUrl && (
                 <Button
                   href={waUrl}
-                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300 min-h-[48px]"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Consultar por WhatsApp

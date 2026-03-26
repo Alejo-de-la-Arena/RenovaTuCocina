@@ -90,8 +90,8 @@ export default function FiltersBar({ onFilter, anos }) {
   if (material) chips.push({ key: 'material', label: getLabel(material, materialOptions), onRemove: () => { setMaterial(''); emit({ material: '' }); } });
   if (ano) chips.push({ key: 'ano', label: ano, onRemove: () => { setAno(''); emit({ ano: '' }); } });
 
-  const inputBase = 'h-10 px-4 rounded-xl border border-neutral-border bg-white text-sm text-neutral-text placeholder-neutral-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus-visible:ring-2';
-  const selectBase = 'h-10 px-4 rounded-xl border border-neutral-border bg-white text-sm text-neutral-text min-w-0 transition-all cursor-pointer appearance-none bg-no-repeat bg-[length:1rem_1rem] bg-[right_0.75rem_center] pr-10 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus-visible:ring-2';
+  const inputBase = 'h-11 px-4 rounded-2xl border border-neutral-border/90 bg-white/95 text-sm text-neutral-text placeholder-neutral-muted shadow-[0_8px_24px_-20px_rgba(0,0,0,0.45)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/70 focus-visible:ring-2';
+  const selectBase = 'h-11 px-4 rounded-2xl border border-neutral-border/90 bg-white/95 text-sm text-neutral-text min-w-0 shadow-[0_8px_24px_-20px_rgba(0,0,0,0.45)] transition-all cursor-pointer appearance-none bg-no-repeat bg-[length:1rem_1rem] bg-[right_0.75rem_center] pr-10 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/70 focus-visible:ring-2';
   const searchInput = (
     <div className="relative flex-1 min-w-0 max-w-[220px] md:max-w-[200px] proyectos-filters-search">
       <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-muted pointer-events-none" />
@@ -132,6 +132,7 @@ export default function FiltersBar({ onFilter, anos }) {
 
   return (
     <div className="space-y-3">
+      <div className="rounded-3xl border border-neutral-border/80 bg-[#fbfaf8] p-3 md:p-4">
       {/* Desktop: una fila compacta y alineada */}
       <div className="hidden md:flex md:items-center md:gap-3 md:flex-wrap">
         {filtersContent}
@@ -139,7 +140,7 @@ export default function FiltersBar({ onFilter, anos }) {
           <button
             type="button"
             onClick={clearFilters}
-            className="h-10 px-4 text-sm font-medium text-neutral-muted hover:text-primary transition-colors rounded-xl hover:bg-primary-50"
+            className="h-11 px-4 text-sm font-medium text-neutral-muted hover:text-primary transition-colors rounded-2xl hover:bg-primary-50"
           >
             Limpiar
           </button>
@@ -152,7 +153,7 @@ export default function FiltersBar({ onFilter, anos }) {
           type="button"
           onClick={() => setMobileOpen(true)}
           className={cn(
-            'inline-flex items-center gap-2 h-10 px-4 rounded-xl border border-neutral-border bg-white font-medium text-neutral-text transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/25',
+            'inline-flex items-center gap-2 h-11 px-4 rounded-2xl border border-neutral-border bg-white font-medium text-neutral-text shadow-[0_8px_20px_-16px_rgba(0,0,0,0.45)] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/25',
             activeCount > 0 && 'border-primary-200 bg-primary-50 text-primary'
           )}
         >
@@ -173,6 +174,7 @@ export default function FiltersBar({ onFilter, anos }) {
             Limpiar
           </button>
         )}
+      </div>
       </div>
 
       {/* Chips de filtros activos — compactos y finos */}

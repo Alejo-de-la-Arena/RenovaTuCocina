@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+
+const HIDDEN_PREFIXES = ['/admin', '/acceso'];
 
 const footerLinks = [
   { href: '/', label: 'Inicio' },
@@ -15,7 +18,11 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const hidden = pathname && HIDDEN_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl('Hola, me gustaría consultar sobre renovación de cocinas.') : null;
+
+  if (hidden) return null;
 
   return (
     <footer className="bg-neutral-text text-white">

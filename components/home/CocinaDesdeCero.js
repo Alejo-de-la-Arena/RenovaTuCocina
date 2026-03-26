@@ -24,12 +24,10 @@ const BENEFICIOS = [
   },
 ];
 
-const MATERIALES = ['Melamina', 'Laqueado', 'MDF', 'Cuarzo', 'Granito'];
-
 export default function CocinaDesdeCero() {
   return (
     <Section id="desde-cero" className="bg-warm-50">
-      <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div className="grid lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20 items-center">
           <motion.div
             initial="initial"
             whileInView="animate"
@@ -44,23 +42,23 @@ export default function CocinaDesdeCero() {
             </motion.p>
             <motion.h2
               variants={staggerItem}
-              className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-text mb-6 tracking-tight leading-tight"
+              className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-text mb-5 md:mb-6 tracking-tight leading-tight"
             >
               Un solo equipo para todo
             </motion.h2>
             <motion.p
               variants={staggerItem}
-              className="text-neutral-muted text-lg mb-10 max-w-xl leading-relaxed"
+              className="text-neutral-muted text-lg mb-8 md:mb-10 max-w-xl leading-relaxed"
             >
               Un solo equipo: diseño, materiales premium y plazos definidos. De la idea al resultado sin intermediarios.
             </motion.p>
 
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {BENEFICIOS.map((b) => (
                 <motion.div
                   key={b.title}
                   variants={staggerItem}
-                  className="flex gap-6"
+                  className="flex gap-4 md:gap-6"
                 >
                   <div className="shrink-0 w-14 h-14 rounded-2xl bg-white border border-neutral-border shadow-soft flex items-center justify-center">
                     <b.icon className="w-7 h-7 text-primary" />
@@ -72,23 +70,6 @@ export default function CocinaDesdeCero() {
                 </motion.div>
               ))}
             </div>
-
-            <motion.div
-              variants={staggerItem}
-              className="mt-10 pt-8 border-t border-neutral-border"
-            >
-              <p className="text-sm font-medium text-neutral-muted mb-3">Materiales y terminaciones</p>
-              <div className="flex flex-wrap gap-2">
-                {MATERIALES.map((m) => (
-                  <span
-                    key={m}
-                    className="px-4 py-2 rounded-xl bg-white border border-neutral-border text-neutral-text text-sm font-medium shadow-card"
-                  >
-                    {m}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -98,7 +79,7 @@ export default function CocinaDesdeCero() {
             transition={{ duration: 0.5 }}
             className="relative order-first lg:order-none"
           >
-            <div className="aspect-[4/5] lg:aspect-[3/4] relative rounded-2xl overflow-hidden shadow-medium">
+            <div className="aspect-[4/5] max-w-[560px] mx-auto lg:max-w-none lg:mx-0 lg:aspect-[3/4] relative rounded-2xl overflow-hidden shadow-medium">
               <Image
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200"
                 alt="Cocina integral moderna"

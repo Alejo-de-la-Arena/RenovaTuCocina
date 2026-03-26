@@ -58,7 +58,7 @@ const MATERIALES_OPTIONS = [
 
 function FormRenovar({ form, setForm, errors }) {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-4 md:gap-6">
       <Input
         id="medidas"
         label="Medidas aprox."
@@ -119,7 +119,7 @@ function FormRenovar({ form, setForm, errors }) {
 
 function FormDesdeCero({ form, setForm, errors }) {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-4 md:gap-6">
       <Select
         id="tipoCocina"
         label="Tipo de cocina"
@@ -177,7 +177,7 @@ function FormDesdeCero({ form, setForm, errors }) {
 
 function FormConsulta({ form, setForm, errors }) {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className="grid md:grid-cols-2 gap-4 md:gap-6">
       <Input
         id="nombre"
         label="Nombre"
@@ -248,7 +248,7 @@ export default function ContactoPremium() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-text mb-4 tracking-tight">
             Empecemos tu proyecto
@@ -265,7 +265,7 @@ export default function ContactoPremium() {
           viewport={{ once: true }}
           className="max-w-2xl mx-auto"
         >
-          <div className="rounded-2xl border border-neutral-border bg-white p-8 md:p-10 shadow-soft space-y-8">
+          <div className="rounded-2xl border border-neutral-border bg-white p-5 sm:p-6 md:p-10 shadow-soft space-y-6 md:space-y-8">
             <div>
               <label htmlFor="motivo" className="block font-semibold text-neutral-text mb-3">
                 Paso 1 — ¿Qué buscás?
@@ -331,7 +331,7 @@ export default function ContactoPremium() {
             {motivo && (
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-white bg-whatsapp hover:bg-whatsapp-hover shadow-soft focus-ring-whatsapp transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-medium text-white bg-whatsapp hover:bg-whatsapp-hover shadow-soft focus-ring-whatsapp transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] min-h-[50px]"
               >
                 <WhatsAppIcon className="w-5 h-5 shrink-0" />
                 Continuar por WhatsApp

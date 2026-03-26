@@ -36,13 +36,19 @@ function MiniProjectSlider({ items }) {
 
   const current = slides[index];
 
+  const upcoming = slides.filter((_, i) => i !== index).slice(0, 2);
+
   return (
     <div
-      className="relative rounded-3xl overflow-hidden border border-neutral-border bg-black/5 shadow-card"
+      className="relative"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative aspect-[4/3] w-full">
+      <div className="absolute -top-12 -left-12 h-40 w-40 rounded-full bg-primary/10 blur-3xl" aria-hidden />
+      <div className="absolute -bottom-10 -right-8 h-36 w-36 rounded-full bg-white/60 blur-2xl" aria-hidden />
+
+      <div className="relative overflow-hidden rounded-[2rem] border border-white/65 bg-white/70 p-2 shadow-[0_18px_50px_-28px_rgba(0,0,0,0.45)] backdrop-blur-md">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.6rem]">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={current.slug + index}
@@ -60,13 +66,12 @@ function MiniProjectSlider({ items }) {
               className="object-cover"
               priority={false}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           </motion.div>
         </AnimatePresence>
 
-        {/* overlay info */}
         <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-          <div className="flex items-end justify-between gap-3">
+          <div className="flex items-end justify-between gap-3 rounded-2xl border border-white/15 bg-black/30 p-3 backdrop-blur-sm md:p-4">
             <div>
               <p className="text-white text-sm md:text-base font-semibold leading-snug line-clamp-2">
                 {current.title}
@@ -78,7 +83,7 @@ function MiniProjectSlider({ items }) {
 
             <Link
               href={`/proyectos/${current.slug}`}
-              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-2 text-white text-xs md:text-sm font-medium backdrop-blur hover:bg-white/20 transition"
+              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-2 text-white text-xs md:text-sm font-medium backdrop-blur transition hover:bg-white/30"
               aria-label={`Ver proyecto ${current.title}`}
             >
               Ver
@@ -87,9 +92,8 @@ function MiniProjectSlider({ items }) {
           </div>
         </div>
 
-        {/* dots */}
         {hasMultiple && (
-          <div className="absolute top-4 right-4 flex items-center gap-2">
+          <div className="absolute top-4 right-4 flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-2 py-1.5 backdrop-blur-sm">
             {slides.map((_, i) => (
               <button
                 key={i}
@@ -105,82 +109,90 @@ function MiniProjectSlider({ items }) {
           </div>
         )}
       </div>
+      </div>
 
-      {/* quick thumbs (opcional, queda premium y ayuda a diferenciarse) */}
-      {slides.length >= 3 && (
-        <div className="grid grid-cols-3 gap-2 p-3 bg-white">
-          {slides.slice(0, 3).map((p, i) => (
-            <button
-              key={p.slug + i}
-              onClick={() => goTo(i)}
-              className={cn(
-                'relative aspect-[4/3] rounded-2xl overflow-hidden border transition',
-                i === index ? 'border-primary/40 ring-2 ring-primary/15' : 'border-neutral-border hover:border-primary/25'
-              )}
-              aria-label={`Ver ${p.title}`}
-            >
-              <Image
-                src={p.imagenPrincipal || p.galeriaDespues?.[0]}
-                alt={p.title}
-                fill
-                sizes="220px"
-                className="object-cover"
-              />
-            </button>
-          ))}
+      {upcoming.length > 0 && (
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          {upcoming.map((p) => {
+            const thumbIndex = slides.findIndex((s) => s.slug === p.slug);
+            return (
+              <button
+                key={p.slug}
+                onClick={() => goTo(thumbIndex)}
+                className="group relative overflow-hidden rounded-2xl border border-neutral-border/80 bg-white p-1 text-left transition hover:border-primary/25 hover:shadow-card"
+                aria-label={`Ver ${p.title}`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
+                  <Image
+                    src={p.imagenPrincipal || p.galeriaDespues?.[0]}
+                    alt={p.title}
+                    fill
+                    sizes="220px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                  <p className="absolute bottom-2 left-2 right-2 text-xs font-medium text-white line-clamp-2">
+                    {p.title}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       )}
     </div>
   );
 }
 
+
 export default function ProyectosHero({ projects = [] }) {
-  const sliderItems = useMemo(() => {
+    const sliderItems = useMemo(() => {
     const items = (projects || []).filter(Boolean).slice(0, 5);
     return items;
   }, [projects]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 md:py-28">
-      {/* Fondo suave como “Cómo trabajamos”, pero neutro */}
+    <section className="relative overflow-hidden bg-[#f7f4ef] py-16 md:py-24">
       <div
         className="absolute inset-0"
         aria-hidden
         style={{
           background:
-            'radial-gradient(900px 380px at 20% 10%, rgba(123,30,30,0.10), transparent 60%),' +
-            'radial-gradient(700px 320px at 80% 20%, rgba(0,0,0,0.05), transparent 65%)'
+            'linear-gradient(120deg, rgba(18,18,18,0.04) 0%, rgba(255,255,255,0) 35%),' +
+            'radial-gradient(900px 420px at 8% 0%, rgba(123,30,30,0.16), transparent 62%),' +
+            'radial-gradient(700px 320px at 88% 16%, rgba(255,255,255,0.75), transparent 68%)'
         }}
       />
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Texto izquierda */}
-          <div className="lg:col-span-6">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-5">
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
-              className="text-sm md:text-base font-medium text-neutral-muted tracking-wide"
+              className="inline-flex items-center rounded-full border border-neutral-border/80 bg-white/70 px-3 py-1 text-xs md:text-sm font-medium uppercase tracking-[0.18em] text-neutral-muted"
             >
-              Conocé nuestros proyectos
+              Portfolio curado
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="font-serif text-4xl md:text-5xl lg:text-[3rem] font-bold text-neutral-text mt-3 mb-4 tracking-tight"
+              className="mt-5 font-serif text-[2.35rem] leading-[1.03] font-semibold tracking-tight text-neutral-text md:text-6xl lg:text-[4rem]"
             >
-              Proyectos
+              Diseños de cocina
+              <span className="block text-primary">con carácter editorial</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-neutral-muted text-lg leading-relaxed max-w-xl"
+              className="mt-6 max-w-xl text-base leading-relaxed text-neutral-muted md:text-lg"
             >
-              Antes y después reales en zona norte y CABA. Mirá materiales, estilos y soluciones aplicadas en cocinas de distintos tamaños.
+              Una selección de reformas reales en CABA y zona norte. Cada caso combina funcionalidad,
+              proporción y materialidad para transformar la cocina en el centro del hogar.
             </motion.p>
 
             <motion.div
@@ -189,25 +201,44 @@ export default function ProyectosHero({ projects = [] }) {
               transition={{ duration: 0.4, delay: 0.15 }}
               className="mt-8 flex flex-wrap gap-3"
             >
-              <Button href="#proyectos-grid" size="lg" className="inline-flex items-center gap-2">
+              <Button href="#proyectos-grid" size="lg" className="inline-flex items-center gap-2 rounded-full px-7">
                 Ver proyectos
                 <ArrowUpRight className="w-5 h-5" />
               </Button>
 
               <Button
                 href="/contacto"
-                variant="ghost"
+                variant="secondary"
                 size="lg"
-                className="inline-flex items-center gap-2"
+                className="inline-flex items-center gap-2 rounded-full px-7"
               >
                 Consultar
                 <ArrowUpRight className="w-5 h-5" />
               </Button>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-border/70 pt-6"
+            >
+              <div>
+                <p className="font-serif text-2xl text-neutral-text">{projects.length}+</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-neutral-muted">Proyectos</p>
+              </div>
+              <div>
+                <p className="font-serif text-2xl text-neutral-text">100%</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-neutral-muted">A medida</p>
+              </div>
+              <div>
+                <p className="font-serif text-2xl text-neutral-text">Antes/Después</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-neutral-muted">Documentado</p>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Visual derecha */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -218,6 +249,8 @@ export default function ProyectosHero({ projects = [] }) {
           </div>
         </div>
       </Container>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-white/70" />
     </section>
   );
 }

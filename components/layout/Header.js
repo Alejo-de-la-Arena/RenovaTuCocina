@@ -44,8 +44,11 @@ function NavLink({ href, label, isActive }) {
   );
 }
 
+const HIDDEN_PREFIXES = ['/admin', '/acceso'];
+
 export default function Header() {
   const pathname = usePathname();
+  const hidden = pathname && HIDDEN_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -61,7 +64,17 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl('Hola, me gustaría consultar sobre renovación de cocinas.') : null;
+
+  if (hidden) return null;
 
   return (
     <header
@@ -124,10 +137,12 @@ export default function Header() {
               </a>
             )}
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl hover:bg-neutral-soft transition-colors focus-ring"
+              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl hover:bg-neutral-soft transition-colors focus-ring"
               aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu-panel"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -144,29 +159,33 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[70] bg-black/40 backdrop-blur-sm md:hidden"
               aria-hidden
             />
             <motion.div
+              id="mobile-menu-panel"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[min(320px,85vw)] bg-white shadow-2xl md:hidden flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-[80] w-[92vw] max-w-[420px] bg-white shadow-2xl md:hidden flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú móvil"
             >
               <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-border/80">
                 <img src="/assets/brand/logo-mdv.svg" alt="MDV Proyectos" className="h-7 w-auto object-contain text-neutral-text" width={120} height={30} />
                 <button
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2.5 rounded-lg hover:bg-neutral-soft transition-colors"
+                  className="p-2.5 min-h-[44px] min-w-[44px] rounded-lg hover:bg-neutral-soft transition-colors focus-ring"
                   aria-label="Cerrar"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
           <div className="flex-1 overflow-auto py-6 px-4">
-            <div className="space-y-0.5">
+            <div className="space-y-1">
               {navLinks.map((link) => {
                     const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
                     return (
@@ -175,7 +194,7 @@ export default function Header() {
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                          'block py-3.5 px-4 rounded-xl text-base font-medium transition-colors',
+                          'block py-4 px-4 rounded-xl text-base font-medium transition-colors min-h-[48px]',
                           isActive ? 'bg-primary-50 text-primary' : 'text-neutral-text hover:bg-neutral-soft'
                         )}
                       >

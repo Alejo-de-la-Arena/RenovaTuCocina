@@ -1,9 +1,9 @@
-import { getAllSlugs } from '@/data/projects';
+import { getPublicProjectSlugs } from '@/lib/projects/queries';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://renovatucocina.com';
 
-export default function sitemap() {
-  const slugs = getAllSlugs();
+export default async function sitemap() {
+  const slugs = await getPublicProjectSlugs();
   const projectUrls = slugs.map((slug) => ({
     url: `${BASE}/proyectos/${slug}`,
     lastModified: new Date(),

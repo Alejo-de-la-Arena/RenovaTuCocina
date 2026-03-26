@@ -15,8 +15,9 @@ export default function ProjectIntroPremium({ project }) {
     },
   ].filter(Boolean);
 
+  const introSource = project.descripcionCorta || project.problema || '';
   const summary =
-    project.problema?.slice(0, 200).trim() + (project.problema?.length > 200 ? '…' : '') || '';
+    introSource.slice(0, 200).trim() + (introSource.length > 200 ? '…' : '') || '';
 
   return (
     <Section className="bg-warm-50 border-t border-neutral-border/60">

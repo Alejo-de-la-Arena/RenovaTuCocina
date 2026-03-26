@@ -1,6 +1,7 @@
 /**
- * Mock data de proyectos de cocinas
- * Imágenes placeholder de Unsplash (cocinas modernas)
+ * Datos de respaldo cuando Supabase no está configurado o falla la lectura.
+ * Con `NEXT_PUBLIC_SUPABASE_URL` + anon key, la web pública usa la tabla `projects`.
+ * Imágenes: Unsplash (placeholders).
  */
 
 export const projects = [

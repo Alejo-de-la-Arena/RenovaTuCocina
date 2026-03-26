@@ -30,13 +30,13 @@ const TESTIMONIOS = [
 
 export default function TestimoniosPremium() {
   return (
-    <Section className="bg-dark-section py-20 md:py-28">
+    <Section className="bg-dark-section py-16 md:py-28">
       <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <motion.h2
             variants={staggerItem}
@@ -50,7 +50,7 @@ export default function TestimoniosPremium() {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-5 md:gap-8"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
@@ -60,7 +60,7 @@ export default function TestimoniosPremium() {
             <motion.article
               key={t.nombre}
               variants={staggerItem}
-              className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 flex flex-col"
+              className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-8 flex flex-col"
             >
               <div className="flex gap-1 mb-4" aria-hidden>
                 {[...Array(t.rating)].map((_, j) => (
@@ -69,7 +69,7 @@ export default function TestimoniosPremium() {
                   </span>
                 ))}
               </div>
-              <p className="text-white/95 text-lg leading-relaxed mb-6 flex-1">"{t.texto}"</p>
+              <p className="text-white/95 text-base md:text-lg leading-relaxed mb-6 flex-1">"{t.texto}"</p>
               <div>
                 <p className="font-semibold text-white">{t.nombre}</p>
                 <p className="text-sm text-dark-muted">{t.zona}</p>

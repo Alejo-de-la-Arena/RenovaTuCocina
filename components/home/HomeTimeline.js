@@ -20,7 +20,7 @@ export default function HomeTimeline() {
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <motion.h2
             variants={staggerItem}
@@ -41,18 +41,18 @@ export default function HomeTimeline() {
           variants={staggerContainer}
           className="relative"
         >
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8 lg:gap-4">
             {PASOS.map((item, i) => (
               <motion.div
                 key={item.paso}
                 variants={staggerItem}
-                className="relative flex flex-col items-center text-center lg:items-start lg:text-left"
+                className="relative flex flex-col items-start text-left sm:items-center sm:text-center lg:items-start lg:text-left rounded-2xl border border-neutral-border bg-white/70 p-5 md:p-6 lg:border-transparent lg:bg-transparent lg:p-0"
               >
-                <div className="flex flex-col sm:flex-row gap-4 w-full sm:justify-center lg:justify-start">
+                <div className="flex flex-row gap-4 w-full sm:flex-col sm:justify-center lg:flex-row lg:justify-start">
                   <div className="shrink-0 w-14 h-14 rounded-2xl bg-primary text-white font-bold flex items-center justify-center text-xl shadow-soft">
                     {item.paso}
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="font-semibold text-neutral-text text-lg mb-1">{item.titulo}</h3>
                     <p className="text-neutral-muted text-sm leading-relaxed">{item.desc}</p>
                   </div>
@@ -65,9 +65,9 @@ export default function HomeTimeline() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mt-12"
+            className="text-center mt-10 md:mt-12"
           >
-            <Button href="/como-trabajamos" variant="outline">
+            <Button href="/como-trabajamos" variant="outline" className="w-full sm:w-auto min-h-[48px]">
               Ver proceso completo
             </Button>
           </motion.div>
