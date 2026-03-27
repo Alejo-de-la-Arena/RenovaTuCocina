@@ -44,12 +44,12 @@ export default function ProyectosPageClient({ projects }) {
 
       <Section
         id="proyectos-grid"
-        className="relative bg-white pt-20 md:pt-24 pb-16 md:pb-24"
+        className="relative bg-white pt-12 md:pt-16 pb-16 md:pb-24"
         containerClassName="relative"
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute left-0 right-0 -top-8 mx-auto h-px w-[min(1100px,88vw)] bg-gradient-to-r from-transparent via-neutral-border to-transparent"
+          className="pointer-events-none absolute left-0 right-0 -top-6 mx-auto h-px w-[min(1100px,88vw)] bg-gradient-to-r from-transparent via-neutral-border/80 to-transparent"
         />
         <motion.div
           initial={{ opacity: 0, y: 8 }}

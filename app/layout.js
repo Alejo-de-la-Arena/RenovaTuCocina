@@ -38,8 +38,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${dmSans.variable} ${greatVibes.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col">
+    <html
+      lang="es"
+      className={`${montserrat.variable} ${dmSans.variable} ${greatVibes.variable}`}
+    >
+      <body
+        suppressHydrationWarning
+        className="font-sans min-h-screen flex flex-col"
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
