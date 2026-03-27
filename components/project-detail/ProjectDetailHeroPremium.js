@@ -49,13 +49,12 @@ export default function ProjectDetailHeroPremium({ project }) {
 
   if (!project || !slides.length) return null;
 
-  const mainMaterial = project.materiales?.[0] || null;
   const tagline =
     project.solucion?.slice(0, 120).trim() + (project.solucion?.length > 120 ? '…' : '') || '';
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative min-h-screen w-full overflow-hidden bg-neutral-text"
       onMouseEnter={() => hasMultiple && setIsPaused(true)}
       onMouseLeave={() => hasMultiple && setIsPaused(false)}
     >
@@ -63,10 +62,10 @@ export default function ProjectDetailHeroPremium({ project }) {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: TRANSITION_DURATION, ease: easing }}
+            transition={{ duration: TRANSITION_DURATION + 0.2, ease: easing }}
             className="absolute inset-0"
           >
             <Image
@@ -78,86 +77,101 @@ export default function ProjectDetailHeroPremium({ project }) {
               className="object-cover"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/50"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.16),transparent_38%),linear-gradient(180deg,rgba(8,8,8,0.2)_0%,rgba(8,8,8,0.35)_34%,rgba(8,8,8,0.84)_100%)]"
               aria-hidden
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Contador premium */}
       {hasMultiple && (
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
-          <span className="font-mono text-sm text-white/90 tracking-widest">
+        <div className="absolute top-8 md:top-10 left-1/2 -translate-x-1/2 z-20">
+          <span className="inline-flex items-center rounded-full border border-white/30 bg-black/25 px-4 py-2 font-mono text-xs md:text-sm text-white/90 tracking-[0.28em] backdrop-blur-md">
             {formatCounter(index, slides.length)}
           </span>
         </div>
       )}
 
-      {/* Navegación: flechas */}
       {hasMultiple && (
         <>
-          <button
+          <motion.button
             type="button"
             onClick={prev}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="absolute left-4 md:left-8 lg:left-10 top-1/2 -translate-y-1/2 z-40 h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
             aria-label="Imagen anterior"
           >
             <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             type="button"
             onClick={next}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="absolute right-4 md:right-8 lg:right-10 top-1/2 -translate-y-1/2 z-40 h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
             aria-label="Siguiente imagen"
           >
             <ChevronRight className="w-6 h-6" />
-          </button>
+          </motion.button>
         </>
       )}
 
-      {/* Bloque de información integrado — franja inferior */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10 lg:p-12">
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-4 md:p-8 lg:p-10 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: easing }}
-          className="max-w-4xl"
+          transition={{ duration: 0.75, delay: 0.22, ease: easing }}
+          className="pointer-events-auto max-w-4xl rounded-3xl border border-white/20 bg-black/25 p-5 md:p-7 lg:p-8 backdrop-blur-md shadow-[0_24px_58px_rgba(0,0,0,0.32)]"
         >
-          <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1 text-sm text-white/80 mb-3">
-            {project.ubicacion && <span>{project.ubicacion}</span>}
-            {project.año && <span>{project.año}</span>}
-            {project.tiempoObra && <span>{project.tiempoObra}</span>}
-            {project.tipo && (
-              <span className="capitalize">Cocina en {project.tipo}</span>
-            )}
-            {mainMaterial && <span>{mainMaterial}</span>}
-          </div>
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-tight mb-4">
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.34, ease: easing }}
+            className="inline-block text-[11px] md:text-xs uppercase tracking-[0.28em] text-white/80 mb-4"
+          >
+            Caso de estudio
+          </motion.span>
+
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.08] tracking-tight mb-3 md:mb-4">
             {project.title}
           </h1>
           {tagline && (
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
+            <p className="text-sm md:text-base lg:text-lg text-white/85 max-w-2xl leading-relaxed">
               {tagline}
             </p>
           )}
+          {hasMultiple && (
+            <div className="flex items-center gap-2.5 mt-5 md:mt-6">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className={cn(
+                    'rounded-full transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60',
+                    i === index
+                      ? 'h-2 w-10 bg-white shadow-[0_0_0_1px_rgba(255,255,255,0.2)]'
+                      : 'h-2 w-2 bg-white/40 hover:bg-white/65'
+                  )}
+                  aria-label={`Ir a imagen ${i + 1}`}
+                  aria-current={i === index}
+                />
+              ))}
+            </div>
+          )}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease: easing }}
+            className="mt-6 md:mt-7 w-full max-w-sm h-px bg-gradient-to-r from-white/50 via-white/15 to-transparent"
+          />
         </motion.div>
 
-        {/* Dots */}
         {hasMultiple && (
-          <div className="flex items-center gap-2 mt-8">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={cn(
-                  'rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60',
-                  i === index ? 'w-10 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/70'
-                )}
-                aria-label={`Ir a imagen ${i + 1}`}
-                aria-current={i === index}
-              />
-            ))}
+          <div className="mt-4 md:mt-6 flex justify-end pr-1">
+            <span className="text-[11px] md:text-xs uppercase tracking-[0.24em] text-white/60">
+              Deslizá o usá flechas
+            </span>
           </div>
         )}
       </div>

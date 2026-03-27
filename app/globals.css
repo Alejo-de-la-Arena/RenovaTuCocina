@@ -8,16 +8,17 @@
   }
   body {
     @apply bg-neutral-bg text-neutral-text antialiased;
+    font-family: 'Montserrat', sans-serif;
     font-feature-settings: "kern" 1, "liga" 1;
   }
   /* Jerarquía tipográfica editorial */
   h1, .text-display {
-    @apply font-serif font-bold tracking-tight;
-    letter-spacing: -0.02em;
+    @apply font-serif font-bold;
+    letter-spacing: -0.018em;
   }
   h2, h3 {
-    @apply font-serif font-bold text-neutral-text;
-    letter-spacing: -0.01em;
+    @apply font-serif font-semibold text-neutral-text;
+    letter-spacing: -0.012em;
   }
   p {
     @apply leading-relaxed;
@@ -70,5 +71,17 @@
   }
   .section-spacious {
     @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .bg-premium-dark {
+    background: radial-gradient(circle at 8% 12%, rgba(247, 217, 170, 0.1) 0%, rgba(247, 217, 170, 0) 34%),
+      radial-gradient(circle at 88% 86%, rgba(209, 166, 111, 0.1) 0%, rgba(209, 166, 111, 0) 30%),
+      linear-gradient(140deg, #1f1913 0%, #16120f 42%, #110e0b 100%);
+  }
+
+  .bg-premium-dark-soft {
+    background: radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.06) 0%, transparent 35%),
+      radial-gradient(circle at 92% 78%, rgba(209, 166, 111, 0.08) 0%, transparent 32%),
+      linear-gradient(145deg, #1b1510 0%, #14110d 45%, #0f0d0a 100%);
   }
 }

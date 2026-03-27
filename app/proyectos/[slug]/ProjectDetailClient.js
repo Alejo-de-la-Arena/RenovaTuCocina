@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Section from '@/components/ui/Section';
 import ProjectDetailHeroPremium from '@/components/project-detail/ProjectDetailHeroPremium';
-import ProjectIntroPremium from '@/components/project-detail/ProjectIntroPremium';
 import ProjectChallengeSolution from '@/components/project-detail/ProjectChallengeSolution';
 import ProjectBeforeAfterPremium from '@/components/project-detail/ProjectBeforeAfterPremium';
 import ProjectMaterialsPremium from '@/components/project-detail/ProjectMaterialsPremium';
@@ -25,7 +24,6 @@ export default function ProjectDetailClient({ project }) {
   return (
     <>
       <ProjectDetailHeroPremium project={project} />
-      <ProjectIntroPremium project={project} />
       <ProjectChallengeSolution project={project} />
       <ProjectBeforeAfterPremium project={project} />
       <ProjectMaterialsPremium project={project} />

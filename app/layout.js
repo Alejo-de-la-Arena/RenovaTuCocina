@@ -1,23 +1,17 @@
-import { Inter, Playfair_Display, DM_Sans, Great_Vibes } from 'next/font/google';
+import { Montserrat, DM_Sans, Great_Vibes } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-montserrat',
   display: 'swap',
 });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-dm-sans',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -44,7 +38,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${inter.variable} ${dmSans.variable} ${playfair.variable} ${greatVibes.variable}`}>
+    <html lang="es" className={`${montserrat.variable} ${dmSans.variable} ${greatVibes.variable}`}>
       <body className="font-sans min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>

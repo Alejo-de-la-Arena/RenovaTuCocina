@@ -305,19 +305,19 @@ export default function ProjectForm({ mode = 'create', projectId = null, default
       </fieldset>
 
       <fieldset className="space-y-4 rounded-2xl border border-neutral-border/80 bg-white p-6 shadow-sm">
-        <legend className="px-1 font-serif text-lg font-semibold text-neutral-text">Extensible (JSON)</legend>
+        <legend className="px-1 font-serif text-lg font-semibold text-neutral-text">
+          Galería de imágenes del proyecto
+        </legend>
         <Textarea
-          id="extra_json"
-          name="extra_json"
-          label="Campos extra (JSON válido)"
-          rows={4}
-          defaultValue={defaultValues.extra_json}
+          id="galeria_proyecto_text"
+          name="galeria_proyecto_text"
+          label="Imágenes para slider final — una URL por línea"
+          rows={5}
+          defaultValue={defaultValues.galeria_proyecto_text}
           disabled={isPending}
         />
-        <p className="text-xs text-neutral-muted -mt-2">
-          Para ampliar datos sin migrar la tabla. Ejemplo:{' '}
-          <code className="text-[11px] bg-neutral-soft px-1 rounded">{`{"resultadosClave":["Más luz"]}`}</code>
-        </p>
+        <p className="text-xs text-neutral-muted -mt-2">Estas imágenes se mostrarán en la galería final del detalle.</p>
+        <input type="hidden" name="extra_json" value={defaultValues.extra_json || ''} readOnly />
       </fieldset>
 
       <div className="flex flex-wrap gap-3">

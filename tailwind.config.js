@@ -61,9 +61,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        'nav': ['var(--font-dm-sans)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        'nav': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-montserrat)', 'sans-serif'],
         script: ['var(--font-script)', 'Georgia', 'cursive'],
       },
       fontSize: {

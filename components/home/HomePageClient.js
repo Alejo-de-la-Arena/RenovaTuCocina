@@ -11,7 +11,8 @@ import ContactoPremium from '@/components/home/ContactoPremium';
 
 export default function HomePageClient({ featuredProjects = [] }) {
   return (
-    <>
+    <div className="relative bg-premium-dark">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(circle_at_24%_10%,rgba(255,255,255,0.12),transparent_56%)]" />
       <HeroPremium
         showBeforeAfter
         ctaRenovar={
@@ -47,6 +48,6 @@ export default function HomePageClient({ featuredProjects = [] }) {
       <TestimoniosPremium />
 
       <ContactoPremium />
-    </>
+    </div>
   );
 }

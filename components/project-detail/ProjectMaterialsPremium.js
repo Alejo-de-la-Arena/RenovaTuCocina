@@ -35,44 +35,45 @@ export default function ProjectMaterialsPremium({ project }) {
   if (!items.length) return null;
 
   return (
-    <Section className="bg-white">
+    <Section className="bg-[#f5f2ec] border-y border-[#e7e0d4]">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-80px' }}
       >
-        <h2 className="font-serif text-2xl md:text-3xl font-bold text-neutral-text mb-2 tracking-tight">
+        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-[#1f1913] mb-3 tracking-tight">
           Materiales y decisiones
         </h2>
-        <p className="text-neutral-muted mb-10 max-w-xl">
+        <p className="text-[#5c5449] mb-10 md:mb-12 max-w-2xl text-base md:text-lg">
           Terminaciones, recursos y criterios que definieron este proyecto.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {items.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-neutral-border bg-warm-50/50 p-6 flex flex-col"
+              transition={{ delay: i * 0.06, duration: 0.45 }}
+              className="group rounded-3xl border border-[#dfd6c8] bg-white p-6 md:p-7 flex flex-col shadow-[0_14px_35px_rgba(40,30,18,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(40,30,18,0.12)]"
             >
-              <div className="flex items-center gap-3 mb-2">
+              <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl border border-[#e7d9c5] bg-[#f8f1e6] text-[#6e5e47] transition-colors duration-300 group-hover:bg-[#f3e7d5]">
                 {item.type === 'material' && (
-                  <Layers className="w-5 h-5 text-primary shrink-0" />
+                  <Layers className="h-5 w-5 shrink-0" />
                 )}
                 {item.type === 'decision' && (
-                  <Ruler className="w-5 h-5 text-primary shrink-0" />
+                  <Ruler className="h-5 w-5 shrink-0" />
                 )}
                 {item.type === 'timing' && (
-                  <Clock className="w-5 h-5 text-primary shrink-0" />
+                  <Clock className="h-5 w-5 shrink-0" />
                 )}
-                <span className="font-semibold text-neutral-text">{item.label}</span>
               </div>
+              <span className="font-semibold text-[#211b15] text-lg leading-snug">{item.label}</span>
               {item.desc && (
-                <p className="text-neutral-muted text-sm leading-relaxed mt-1">{item.desc}</p>
+                <p className="text-[#655d52] text-sm md:text-[15px] leading-relaxed mt-3">{item.desc}</p>
               )}
+              <div className="mt-6 h-px w-full bg-gradient-to-r from-[#ddd2c2] to-transparent" />
             </motion.div>
           ))}
         </div>

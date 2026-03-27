@@ -25,9 +25,11 @@ export default function Footer() {
   if (hidden) return null;
 
   return (
-    <footer className="bg-neutral-text text-white">
+    <footer className="relative overflow-hidden bg-premium-dark-soft text-white border-t border-white/10">
+      <div className="pointer-events-none absolute -top-28 right-10 h-56 w-56 rounded-full bg-[#d1a66f]/12 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 left-8 h-56 w-56 rounded-full bg-[#f7d9aa]/8 blur-3xl" />
       <Container>
-        <div className="py-18 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="relative z-10 py-18 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block" aria-label="MDV Proyectos - Inicio">
               <img
@@ -38,7 +40,7 @@ export default function Footer() {
                 height={36}
               />
             </Link>
-            <p className="mt-5 text-neutral-400 text-sm leading-relaxed max-w-xs">
+            <p className="mt-5 text-white/70 text-sm leading-relaxed max-w-xs">
               Renovación de cocinas a medida. Diseño, fabricación e instalación en zona norte y CABA.
             </p>
           </div>
@@ -48,10 +50,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-neutral-400 hover:text-white transition-colors text-sm"
-                  >
+                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -61,7 +60,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider opacity-90">Contacto</h3>
-            <ul className="space-y-4 text-sm text-neutral-400">
+            <ul className="space-y-4 text-sm text-white/70">
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 shrink-0 text-primary-400" />
                 Zona Norte, Buenos Aires
@@ -93,13 +92,13 @@ export default function Footer() {
                 Escribinos por WhatsApp
               </motion.a>
             ) : (
-              <p className="text-neutral-500 text-sm">Configurar NEXT_PUBLIC_WA_NUMBER</p>
+              <p className="text-white/45 text-sm">Configurar NEXT_PUBLIC_WA_NUMBER</p>
             )}
           </div>
         </div>
 
-        <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-neutral-500 text-sm">
+        <div className="relative z-10 py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-white/45 text-sm">
             © {new Date().getFullYear()} MDV Proyectos. Todos los derechos reservados.
           </p>
         </div>

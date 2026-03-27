@@ -61,7 +61,9 @@ export default function ServiciosPremium() {
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl(selected.mensaje) : null;
 
   return (
-    <section id="renovar" className="relative bg-neutral-text py-16 md:py-28 overflow-hidden">
+    <section id="renovar" className="relative bg-premium-dark-soft py-18 md:py-30 overflow-hidden border-y border-white/10">
+      <div className="pointer-events-none absolute -top-28 right-[8%] h-72 w-72 rounded-full bg-[#d1a66f]/15 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-36 left-[4%] h-80 w-80 rounded-full bg-[#f7d9aa]/10 blur-3xl" />
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -76,10 +78,10 @@ export default function ServiciosPremium() {
           viewport={{ once: true, margin: '-60px' }}
           className="text-center mb-10 md:mb-18"
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight leading-tight">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 tracking-tight leading-tight">
             Cómo querés renovar
           </h2>
-          <p className="text-white/75 text-lg max-w-xl mx-auto">
+          <p className="text-white/80 text-lg max-w-xl mx-auto">
             Elegí el tipo de intervención y te guiamos con un presupuesto sin cargo.
           </p>
         </motion.div>
@@ -94,11 +96,11 @@ export default function ServiciosPremium() {
                 type="button"
                 onClick={() => setSelected(s)}
                 className={cn(
-                  'relative rounded-2xl overflow-hidden text-left p-4 sm:p-5 md:p-6 transition-all duration-300 min-h-[96px]',
+                  'relative rounded-2xl overflow-hidden text-left p-4 sm:p-5 md:p-6 transition-all duration-500 min-h-[96px]',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-text',
                   isSelected
-                    ? 'bg-primary ring-2 ring-primary-400 ring-offset-2 ring-offset-neutral-text shadow-lg'
-                    : 'bg-white/10 border border-white/15 hover:bg-white/15 hover:border-white/25'
+                    ? 'bg-primary/85 ring-2 ring-primary-300 ring-offset-2 ring-offset-[#17130f] shadow-[0_20px_44px_rgba(0,0,0,0.35)]'
+                    : 'bg-white/[0.08] border border-white/15 hover:bg-white/[0.13] hover:border-white/30'
                 )}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -134,10 +136,10 @@ export default function ServiciosPremium() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.45 }}
             className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start"
           >
-            <div className="lg:col-span-2 relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-white/15 bg-white/5">
+            <div className="lg:col-span-2 relative aspect-[4/3] lg:aspect-square rounded-[24px] overflow-hidden border border-white/20 bg-white/[0.06] shadow-[0_24px_50px_rgba(0,0,0,0.28)]">
               <Image
                 src={selected.image}
                 alt={selected.label}
@@ -145,12 +147,13 @@ export default function ServiciosPremium() {
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
-            <div className="lg:col-span-3 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-10">
+            <div className="lg:col-span-3 rounded-[26px] border border-white/15 bg-[linear-gradient(135deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.04)_60%)] backdrop-blur-md p-6 md:p-10 shadow-[0_24px_55px_rgba(0,0,0,0.2)]">
               <p className="text-white/60 text-sm font-medium uppercase tracking-wider mb-2">
                 {selected.tipo}
               </p>
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold text-white mb-2 tracking-tight">
                 {selected.label}
               </h3>
               <p className="text-white/70 text-sm mb-6">
