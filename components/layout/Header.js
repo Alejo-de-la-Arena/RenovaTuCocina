@@ -10,6 +10,8 @@ import { cn } from '@/lib/cn';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { createPortal } from 'react-dom';
+import { useRef } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
@@ -51,6 +53,7 @@ export default function Header() {
   const hidden = pathname && HIDDEN_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const closeButtonRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 16);
@@ -59,9 +62,19 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
-    return () => { document.body.style.overflow = ''; };
+    if (!isMobileMenuOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    const originalPaddingRight = document.body.style.paddingRight;
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = 'hidden';
+    if (scrollBarWidth > 0) document.body.style.paddingRight = `${scrollBarWidth}px`;
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+    };
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
@@ -71,6 +84,12 @@ export default function Header() {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    // Fokus al cerrar para una UX más sólida.
+    closeButtonRef.current?.focus?.();
+  }, [isMobileMenuOpen]);
 
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl('Hola, me gustaría consultar sobre renovación de cocinas.') : null;
 
@@ -150,76 +169,93 @@ export default function Header() {
         </nav>
       </Container>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-[70] bg-black/40 backdrop-blur-sm md:hidden"
-              aria-hidden
-            />
-            <motion.div
-              id="mobile-menu-panel"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed top-0 right-0 bottom-0 z-[80] w-[92vw] max-w-[420px] bg-white shadow-2xl md:hidden flex flex-col"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Menú móvil"
-            >
-              <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-border/80">
-                <img src="/assets/brand/logo-mdv.svg" alt="MDV Proyectos" className="h-7 w-auto object-contain text-neutral-text" width={120} height={30} />
-                <button
-                  type="button"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2.5 min-h-[44px] min-w-[44px] rounded-lg hover:bg-neutral-soft transition-colors focus-ring"
-                  aria-label="Cerrar"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-          <div className="flex-1 overflow-auto py-6 px-4">
-            <div className="space-y-1">
-              {navLinks.map((link) => {
-                    const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={cn(
-                          'block py-4 px-4 rounded-xl text-base font-medium transition-colors min-h-[48px]',
-                          isActive ? 'bg-primary-50 text-primary' : 'text-neutral-text hover:bg-neutral-soft'
-                        )}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  })}
+      {createPortal(
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 z-[900] bg-black/40 backdrop-blur-sm md:hidden"
+                aria-hidden
+              />
+
+              {/* Panel */}
+              <motion.div
+                id="mobile-menu-panel"
+                initial={{ transform: 'translateX(100%)' }}
+                animate={{ transform: 'translateX(0%)' }}
+                exit={{ transform: 'translateX(100%)' }}
+                transition={{ type: 'tween', duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="fixed inset-y-0 right-0 z-[950] md:hidden flex w-full max-w-[420px] flex-col bg-white shadow-2xl"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menú móvil"
+                style={{ height: '100dvh' }}
+              >
+                <div className="flex items-center justify-between border-b border-neutral-border/80 px-5 pt-[env(safe-area-inset-top)] pb-4">
+                  <img
+                    src="/assets/brand/logo-mdv.webp"
+                    alt="MDV Proyectos"
+                    className="h-12 mt-4 w-auto object-contain text-neutral-text"
+                    width={120}
+                    height={30}
+                  />
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2.5 min-h-[44px] min-w-[44px] rounded-lg hover:bg-neutral-soft transition-colors focus-ring"
+                    aria-label="Cerrar"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
-                {waUrl && (
-                  <div className="mt-6 pt-6 border-t border-neutral-border/80">
-                    <Button
-                      href={waUrl}
-                      variant="whatsapp"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3.5"
-                    >
-                      <WhatsAppIcon className="w-5 h-5" />
-                      Escribinos por WhatsApp
-                    </Button>
+
+                <div className="flex-1 overflow-y-auto overscroll-contain py-6 px-4">
+                  <div className="space-y-1">
+                    {navLinks.map((link) => {
+                      const isActive = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={cn(
+                            'block py-4 px-4 rounded-xl text-base font-medium transition-colors min-h-[48px] select-none',
+                            isActive ? 'bg-primary-50 text-primary' : 'text-neutral-text hover:bg-neutral-soft'
+                          )}
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    })}
                   </div>
-                )}
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+
+                  {waUrl && (
+                    <div className="mt-6 pt-6 border-t border-neutral-border/80">
+                      <Button
+                        href={waUrl}
+                        variant="whatsapp"
+                        className="w-full inline-flex items-center justify-center gap-2 py-3.5"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <WhatsAppIcon className="w-5 h-5" />
+                        Escribinos por WhatsApp
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </header>
   );
 }
