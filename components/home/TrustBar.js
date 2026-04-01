@@ -15,11 +15,11 @@ export default function TrustBar() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.5 }}
-      className="flex flex-wrap justify-start sm:justify-center gap-x-5 sm:gap-x-8 gap-y-2 text-sm text-white/80"
+      className="flex flex-nowrap justify-between sm:justify-center gap-x-2.5 sm:gap-x-8 gap-y-2 text-[11px] sm:text-sm text-white/80 leading-tight"
       role="list"
     >
       {TRUST_ITEMS.map((item, i) => (
-        <span key={i} className="inline-flex items-baseline gap-1.5" role="listitem">
+        <span key={i} className="inline-flex items-baseline gap-1 sm:gap-1.5 whitespace-nowrap" role="listitem">
           <span className="font-semibold text-white">{item.value}</span>
           {item.label && <span>{item.label}</span>}
         </span>

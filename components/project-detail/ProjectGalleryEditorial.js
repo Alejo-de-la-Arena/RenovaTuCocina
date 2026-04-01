@@ -37,6 +37,7 @@ export default function ProjectGalleryEditorial({ project }) {
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
+        className="max-w-full"
       >
         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-[#1f1913] mb-3 tracking-tight">
           Galería
@@ -45,8 +46,8 @@ export default function ProjectGalleryEditorial({ project }) {
           Detalles del proyecto y resultado final.
         </p>
 
-        <div className="rounded-[30px] border border-[#dbd2c5] bg-white p-3 md:p-4 shadow-[0_22px_60px_rgba(28,21,13,0.12)]">
-          <div className="relative aspect-[16/10] md:aspect-[16/8] min-h-[280px] rounded-[24px] overflow-hidden bg-neutral-200">
+        <div className="max-w-full rounded-[30px] border border-[#dbd2c5] bg-white p-3 md:p-4 shadow-[0_22px_60px_rgba(28,21,13,0.12)]">
+        <div className="relative w-full min-h-[280px] md:min-h-[460px] lg:min-h-[560px] rounded-[24px] overflow-hidden bg-neutral-200">
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}
@@ -90,13 +91,13 @@ export default function ProjectGalleryEditorial({ project }) {
           </div>
 
           {hasMultiple && (
-            <div className="mt-4 md:mt-5 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-3">
+            <div className="mt-4 md:mt-5 grid w-full max-w-full min-w-0 grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 md:gap-3">
               {images.map((src, i) => (
                 <button
                   key={src + i}
                   type="button"
                   onClick={() => setIndex(i)}
-                  className={`relative aspect-[4/3] rounded-xl overflow-hidden border transition-all duration-300 ${
+                  className={`relative aspect-[4/3] w-full min-w-0 rounded-xl overflow-hidden border transition-all duration-300 ${
                     i === index
                       ? 'border-[#9f8b6a] ring-2 ring-[#beab89]/50'
                       : 'border-[#ddd4c8] hover:border-[#bba883]'

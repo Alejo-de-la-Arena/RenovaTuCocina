@@ -1,9 +1,9 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, ChevronDown } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
@@ -19,9 +19,42 @@ export default function ProyectosHero({ projects = [] }) {
   const list = useMemo(() => (projects || []).filter(Boolean).slice(0, 6), [projects]);
   const totalCount = (projects || []).length;
   const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [displayedIndex, setDisplayedIndex] = useState(0);
+  const [isSwitching, setIsSwitching] = useState(false);
 
   const featured = list[featuredIndex] || null;
-  const imgSrc = featured ? projectImage(featured) : '';
+  const displayed = list[displayedIndex] || null;
+  const displayedSrc = displayed ? projectImage(displayed) : '';
+
+  useEffect(() => {
+    if (!list.length) return;
+    if (featuredIndex === displayedIndex) return;
+    const next = list[featuredIndex];
+    const nextSrc = projectImage(next);
+    if (!nextSrc) {
+      setDisplayedIndex(featuredIndex);
+      return;
+    }
+    let cancelled = false;
+    setIsSwitching(true);
+    const img = new window.Image();
+    img.src = nextSrc;
+    img.decoding = 'async';
+    img.onload = () => {
+      if (cancelled) return;
+      setDisplayedIndex(featuredIndex);
+      setIsSwitching(false);
+    };
+    img.onerror = () => {
+      if (cancelled) return;
+      // Si falla la precarga, igual cambiamos para no bloquear UI.
+      setDisplayedIndex(featuredIndex);
+      setIsSwitching(false);
+    };
+    return () => {
+      cancelled = true;
+    };
+  }, [featuredIndex, displayedIndex, list]);
 
   const textVariants = {
     hidden: { opacity: 0, y: 18 },
@@ -151,30 +184,27 @@ export default function ProyectosHero({ projects = [] }) {
                 <>
                   <div className="relative rounded-[28px] border border-white/80 bg-white/60 p-2 shadow-[0_32px_80px_-24px_rgba(20,16,12,0.35)] backdrop-blur-md sm:rounded-[32px] sm:p-2.5 lg:p-3">
                     <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#e8e2da] sm:aspect-[16/11] sm:rounded-[26px]">
-                      {imgSrc ? (
-                        <AnimatePresence mode="wait" initial={false}>
-                          <motion.div
-                            key={featured.slug}
-                            initial={{ opacity: 0, scale: 1.04 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.02 }}
-                            transition={{ duration: 0.55, ease: easing }}
-                            className="absolute inset-0"
-                          >
-                            <Image
-                              src={imgSrc}
-                              alt={featured.title}
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 1024px) 100vw, 58vw"
-                              priority
-                            />
-                            <div
-                              className="absolute inset-0 bg-gradient-to-t from-[#120f0c]/85 via-[#120f0c]/15 to-transparent"
-                              aria-hidden
-                            />
-                          </motion.div>
-                        </AnimatePresence>
+                      {displayedSrc ? (
+                        <motion.div
+                          key={displayed?.slug || displayedIndex}
+                          initial={{ opacity: 0, scale: 1.01 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.22, ease: easing }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={displayedSrc}
+                            alt={displayed?.title || featured.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 58vw"
+                            priority
+                          />
+                          <div
+                            className="absolute inset-0 bg-gradient-to-t from-[#120f0c]/85 via-[#120f0c]/15 to-transparent"
+                            aria-hidden
+                          />
+                        </motion.div>
                       ) : (
                         <div
                           className="absolute inset-0 bg-gradient-to-br from-[#ebe4dc] to-[#d4cbc0]"
@@ -185,7 +215,7 @@ export default function ProyectosHero({ projects = [] }) {
                       <div
                         className={cn(
                           'absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-7',
-                          imgSrc
+                          displayedSrc
                             ? ''
                             : 'rounded-b-[22px] bg-white/95 backdrop-blur-sm sm:rounded-b-[26px]'
                         )}
@@ -193,7 +223,7 @@ export default function ProyectosHero({ projects = [] }) {
                         <p
                           className={cn(
                             'text-[10px] font-semibold uppercase tracking-[0.22em] sm:text-[11px]',
-                            imgSrc ? 'text-white/75' : 'text-[#8a8277]'
+                            displayedSrc ? 'text-white/75' : 'text-[#8a8277]'
                           )}
                         >
                           Proyecto destacado
@@ -201,19 +231,19 @@ export default function ProyectosHero({ projects = [] }) {
                         <p
                           className={cn(
                             'mt-2 font-serif text-xl font-semibold leading-tight sm:text-2xl md:text-3xl',
-                            imgSrc ? 'text-white' : 'text-[#1a1612]'
+                            displayedSrc ? 'text-white' : 'text-[#1a1612]'
                           )}
                         >
-                          {featured.title}
+                          {(displayed || featured).title}
                         </p>
-                        <p className={cn('mt-1.5 text-sm', imgSrc ? 'text-white/80' : 'text-[#5c554c]')}>
-                          {featured.ubicacion || 'CABA · Zona Norte'}
+                        <p className={cn('mt-1.5 text-sm', displayedSrc ? 'text-white/80' : 'text-[#5c554c]')}>
+                          {(displayed || featured).ubicacion || 'CABA · Zona Norte'}
                         </p>
                         <Link
-                          href={`/proyectos/${featured.slug}`}
+                          href={`/proyectos/${(displayed || featured).slug}`}
                           className={cn(
                             'mt-5 inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-lg transition',
-                            imgSrc
+                            displayedSrc
                               ? 'bg-white text-[#1a1612] hover:bg-[#faf8f5]'
                               : 'border border-[#e5ddd4] bg-[#faf8f6] text-[#1a1612] hover:bg-white'
                           )}
@@ -243,6 +273,7 @@ export default function ProyectosHero({ projects = [] }) {
                             )}
                             aria-label={`Mostrar proyecto ${p.title}`}
                             aria-pressed={active}
+                            disabled={isSwitching && active}
                           >
                             {thumb ? (
                               <Image src={thumb} alt="" fill className="object-cover" sizes="64px" />
