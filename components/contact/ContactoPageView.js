@@ -30,7 +30,7 @@ export default function ContactoPageView() {
               Contactanos
             </h2>
             <p className="mx-auto mt-2 max-w-lg text-[15px] text-[#5c554c] md:text-base">
-              Misma experiencia que en la home: tres variantes, un solo flujo hacia WhatsApp.
+              Contanos tu proyecto y te respondemos en menos de 24 hs.
             </p>
           </motion.div>
 
@@ -79,7 +79,7 @@ export default function ContactoPageView() {
                       </span>
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#8a8277]">Horario</span>
-                        <p className="mt-0.5 text-[15px] leading-relaxed text-[#5c554c] sm:text-base">
+                        <p className="mt-0.5 text-[15px] font-medium leading-relaxed text-[#1a1612] sm:text-base">
                           Lun a Vie 9 a 18 hs. Sábados con turno.
                         </p>
                       </div>
@@ -90,7 +90,7 @@ export default function ContactoPageView() {
                       </span>
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#8a8277]">Zona de trabajo</span>
-                        <p className="mt-0.5 text-[15px] leading-relaxed text-[#5c554c] sm:text-base">
+                        <p className="mt-0.5 text-[15px] font-medium leading-relaxed text-[#1a1612] sm:text-base">
                           Zona Norte y CABA. Otras zonas: consultar.
                         </p>
                       </div>

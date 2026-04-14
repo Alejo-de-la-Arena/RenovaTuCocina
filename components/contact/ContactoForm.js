@@ -23,16 +23,9 @@ const MOTIVO_OPTIONS = [
   { value: 'consulta', label: 'Solo consulta', short: 'Consulta', icon: HelpCircle },
 ];
 
-const PRESUPUESTO_OPTIONS = [
-  { value: 'bajo', label: 'Hasta $500.000' },
-  { value: 'medio', label: '$500.000 - $1.500.000' },
-  { value: 'alto', label: '$1.500.000 - $3.000.000' },
-  { value: 'premium', label: 'Más de $3.000.000' },
-];
-
-const URGENCIA_OPTIONS = [
+const PLAZOS_OPTIONS = [
   { value: 'baja', label: 'Sin urgencia' },
-  { value: 'media', label: '1-3 meses' },
+  { value: 'media', label: 'De 2 a 3 meses' },
   { value: 'alta', label: 'Lo antes posible' },
 ];
 
@@ -67,7 +60,7 @@ function FormRenovar({ form, setForm, errors, inputClass }) {
         id="medidas"
         label="Medidas aprox."
         placeholder="Ej: 3m x 2m"
-        value={form.medidas}
+        value={form.medidas || ''}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}
         error={errors.medidas}
         helperText="Orientativo"
@@ -76,49 +69,44 @@ function FormRenovar({ form, setForm, errors, inputClass }) {
       <Select
         id="estadoActual"
         label="Estado actual"
-        value={form.estadoActual}
+        value={form.estadoActual || ''}
         onChange={(e) => setForm({ ...form, estadoActual: e.target.value })}
         options={ESTADO_OPTIONS}
+        error={errors.estadoActual}
       />
       <Input
         id="zona"
         label="Zona"
         placeholder="Vicente López, San Isidro..."
-        value={form.zona}
+        value={form.zona || ''}
         onChange={(e) => setForm({ ...form, zona: e.target.value })}
         error={errors.zona}
         className={inputClass}
       />
       <Select
-        id="presupuesto"
-        label="Presupuesto estimado"
-        value={form.presupuesto}
-        onChange={(e) => setForm({ ...form, presupuesto: e.target.value })}
-        options={PRESUPUESTO_OPTIONS}
-      />
-      <Select
         id="urgencia"
-        label="Urgencia"
-        value={form.urgencia}
+        label="Plazos"
+        value={form.urgencia || ''}
         onChange={(e) => setForm({ ...form, urgencia: e.target.value })}
-        options={URGENCIA_OPTIONS}
+        options={PLAZOS_OPTIONS}
+        error={errors.urgencia}
       />
       <Input
         id="linkOpcional"
-        label="Link de referencia (opcional)"
-        placeholder="Pinterest o foto"
-        type="url"
-        value={form.linkOpcional}
+        label="Tu foto de referencia (opcional)"
+        placeholder="Cargar aquí"
+        value={form.linkOpcional || ''}
         onChange={(e) => setForm({ ...form, linkOpcional: e.target.value })}
-        className={inputClass}
+        className={cn('md:col-span-2', inputClass)}
       />
       <Textarea
         id="mensaje"
         label="Contanos brevemente qué buscás"
         placeholder="..."
-        value={form.mensaje}
+        value={form.mensaje || ''}
         onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
         className={cn('md:col-span-2', inputClass)}
+        error={errors.mensaje}
       />
     </div>
   );
@@ -130,56 +118,61 @@ function FormDesdeCero({ form, setForm, errors, inputClass }) {
       <Select
         id="tipoCocina"
         label="Tipo de cocina"
-        value={form.tipoCocina}
+        value={form.tipoCocina || ''}
         onChange={(e) => setForm({ ...form, tipoCocina: e.target.value })}
         options={TIPO_COCINA_OPTIONS}
+        error={errors.tipoCocina}
       />
       <Input
         id="medidas"
         label="Medidas aprox."
         placeholder="Ej: 4m x 3m"
-        value={form.medidas}
+        value={form.medidas || ''}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}
         className={inputClass}
+        error={errors.medidas}
       />
       <Select
         id="materiales"
         label="Materiales preferidos"
-        value={form.materiales}
+        value={form.materiales || ''}
         onChange={(e) => setForm({ ...form, materiales: e.target.value })}
         options={MATERIALES_OPTIONS}
+        error={errors.materiales}
       />
       <Input
         id="zona"
         label="Zona"
         placeholder="Palermo, Olivos..."
-        value={form.zona}
+        value={form.zona || ''}
         onChange={(e) => setForm({ ...form, zona: e.target.value })}
         error={errors.zona}
         className={inputClass}
-      />
-      <Select
-        id="presupuesto"
-        label="Presupuesto"
-        value={form.presupuesto}
-        onChange={(e) => setForm({ ...form, presupuesto: e.target.value })}
-        options={PRESUPUESTO_OPTIONS}
       />
       <Input
         id="fechaDeseada"
         label="Fecha deseada (opcional)"
         placeholder="Ej: Marzo 2025"
-        value={form.fechaDeseada}
+        value={form.fechaDeseada || ''}
         onChange={(e) => setForm({ ...form, fechaDeseada: e.target.value })}
+        className={inputClass}
+      />
+      <Input
+        id="linkOpcional"
+        label="Tu foto de referencia (opcional)"
+        placeholder="Cargar aquí"
+        value={form.linkOpcional || ''}
+        onChange={(e) => setForm({ ...form, linkOpcional: e.target.value })}
         className={inputClass}
       />
       <Textarea
         id="mensaje"
         label="Contanos más sobre tu proyecto"
         placeholder="..."
-        value={form.mensaje}
+        value={form.mensaje || ''}
         onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
         className={cn('md:col-span-2', inputClass)}
+        error={errors.mensaje}
       />
     </div>
   );
@@ -192,15 +185,16 @@ function FormConsulta({ form, setForm, errors, inputClass }) {
         id="nombre"
         label="Nombre"
         placeholder="Tu nombre"
-        value={form.nombre}
+        value={form.nombre || ''}
         onChange={(e) => setForm({ ...form, nombre: e.target.value })}
         className={inputClass}
+        error={errors.nombre}
       />
       <Input
         id="zona"
         label="Zona"
         placeholder="Zona Norte, CABA..."
-        value={form.zona}
+        value={form.zona || ''}
         onChange={(e) => setForm({ ...form, zona: e.target.value })}
         error={errors.zona}
         className={inputClass}
@@ -209,7 +203,7 @@ function FormConsulta({ form, setForm, errors, inputClass }) {
         id="mensaje"
         label="Mensaje"
         placeholder="¿En qué podemos ayudarte?"
-        value={form.mensaje}
+        value={form.mensaje || ''}
         onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
         error={errors.mensaje}
         className={cn('md:col-span-2', inputClass)}
@@ -218,11 +212,6 @@ function FormConsulta({ form, setForm, errors, inputClass }) {
   );
 }
 
-/**
- * Misma lógica que la Home: motivo + campos + validación + WhatsApp.
- * variant="home" — select + sección editorial (Home).
- * variant="page" — tabs premium + card (página /contacto).
- */
 export default function ContactoForm({ variant = 'home' }) {
   const isPage = variant === 'page';
   const [motivo, setMotivo] = useState(isPage ? 'renovar' : '');
@@ -234,12 +223,29 @@ export default function ContactoForm({ variant = 'home' }) {
   const validate = () => {
     const newErrors = {};
     if (!motivo) newErrors.motivo = 'Seleccioná un motivo';
-    if (motivo === 'renovar' || motivo === 'desde-cero') {
+
+    if (motivo === 'renovar') {
+      if (!form.medidas?.trim()) newErrors.medidas = 'Indicá las medidas';
+      if (!form.estadoActual) newErrors.estadoActual = 'Seleccioná el estado';
       if (!form.zona?.trim()) newErrors.zona = 'Indicá la zona';
+      if (!form.urgencia) newErrors.urgencia = 'Seleccioná los plazos';
+      if (!form.mensaje?.trim()) newErrors.mensaje = 'Contanos qué buscás';
     }
+
+    if (motivo === 'desde-cero') {
+      if (!form.tipoCocina) newErrors.tipoCocina = 'Elegí el tipo de cocina';
+      if (!form.medidas?.trim()) newErrors.medidas = 'Indicá las medidas';
+      if (!form.materiales) newErrors.materiales = 'Elegí un material';
+      if (!form.zona?.trim()) newErrors.zona = 'Indicá la zona';
+      if (!form.mensaje?.trim()) newErrors.mensaje = 'Contanos sobre tu proyecto';
+    }
+
     if (motivo === 'consulta') {
+      if (!form.nombre?.trim()) newErrors.nombre = 'Indicá tu nombre';
+      if (!form.zona?.trim()) newErrors.zona = 'Indicá la zona';
       if (!form.mensaje?.trim()) newErrors.mensaje = 'Escribí tu mensaje';
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -268,7 +274,9 @@ export default function ContactoForm({ variant = 'home' }) {
     setErrors({});
   };
 
-  const inputClassPage = isPage ? 'border-[#e3dcd4] bg-[#fdfcfa] focus:border-primary/40 focus:ring-primary/15' : undefined;
+  const inputClassPage = isPage
+    ? 'border-[#e3dcd4] bg-[#fdfcfa] focus:border-primary/40 focus:ring-primary/15'
+    : undefined;
 
   const formBody = (
     <>
@@ -298,7 +306,10 @@ export default function ContactoForm({ variant = 'home' }) {
                       : 'text-[#5c554c] hover:bg-white/70 hover:text-[#1a1612]'
                   )}
                 >
-                  <Icon className={cn('h-5 w-5 shrink-0 sm:h-5 sm:w-5', active ? 'text-primary' : 'text-[#a89888]')} strokeWidth={1.5} />
+                  <Icon
+                    className={cn('h-5 w-5 shrink-0', active ? 'text-primary' : 'text-[#a89888]')}
+                    strokeWidth={1.5}
+                  />
                   <span className="leading-tight">{opt.short}</span>
                 </button>
               );

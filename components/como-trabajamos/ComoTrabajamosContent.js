@@ -74,6 +74,8 @@ const faqs = [
   { title: '¿Qué materiales usan?', content: 'Melamina, MDF laqueado, compactos, cuarzo, granito, silestone. Trabajamos con distintos proveedores para adaptarnos a tu presupuesto.' },
   { title: '¿Incluyen plomería y electricidad?', content: 'La fabricación e instalación de muebles la hacemos nosotros. Para conexiones de agua y gas trabajamos con instaladores matriculados o podemos coordinar con el tuyo.' },
   { title: '¿Cómo es el pago?', content: 'Seña al aprobar, porcentaje al iniciar fabricación y saldo al finalizar. Detalles según proyecto.' },
+  { title: '¿Hacen obras y reformas?', content: 'Sí. Además de la fabricación e instalación de cocinas, realizamos obras y reformas asociadas: demoliciones menores, revestimientos, pintura, instalaciones y todo lo necesario para entregar el espacio terminado.' },
+  { title: '¿Trabajan con profesionales?', content: 'Sí. Podemos trabajar tanto con tus arquitectos o diseñadores como con nuestros profesionales de confianza, adaptándonos al equipo que ya estés coordinando.' },
 ];
 
 const fadeUp = {
