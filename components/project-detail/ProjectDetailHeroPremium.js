@@ -54,105 +54,107 @@ export default function ProjectDetailHeroPremium({ project }) {
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden bg-neutral-text"
+      className="relative w-full overflow-hidden bg-neutral-text md:min-h-screen"
       onMouseEnter={() => hasMultiple && setIsPaused(true)}
       onMouseLeave={() => hasMultiple && setIsPaused(false)}
     >
-      {/* Capa de fondo blur (evita bordes vacíos con object-contain en mobile) */}
-      <div className="absolute inset-0">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={`bg-${index}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: TRANSITION_DURATION, ease: easing }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={slides[index]}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover scale-110 blur-2xl opacity-70 md:hidden"
-              aria-hidden
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Capa principal con crossfade (sin mode="wait") */}
-      <div className="absolute inset-0">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 1.02 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: TRANSITION_DURATION, ease: easing }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={slides[index]}
-              alt={`${project.title} — imagen ${index + 1}`}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-contain md:object-cover"
-            />
-            <div
-              className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.12),transparent_38%),linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0.3)_34%,rgba(8,8,8,0.8)_100%)]"
-              aria-hidden
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Contador superior */}
-      {hasMultiple && (
-        <div className="absolute top-8 md:top-10 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-flex items-center rounded-full border border-white/30 bg-black/25 px-4 py-2 font-mono text-xs md:text-sm text-white/90 tracking-[0.28em] backdrop-blur-md">
-            {formatCounter(index, slides.length)}
-          </span>
+      {/* Wrapper de imagen: altura fija en mobile (sin saltos), full screen en desktop */}
+      <div className="relative h-[65vh] min-h-[420px] max-h-[640px] w-full md:h-auto md:min-h-0 md:max-h-none md:absolute md:inset-0">
+        {/* Capa de fondo blur */}
+        <div className="absolute inset-0">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={`bg-${index}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: TRANSITION_DURATION, ease: easing }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={slides[index]}
+                alt=""
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover scale-110 blur-2xl opacity-70 md:hidden"
+                aria-hidden
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
-      )}
 
-      {/* Flechas */}
-      {hasMultiple && (
-        <>
-          <motion.button
-            type="button"
-            onClick={prev}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="absolute left-4 md:left-8 lg:left-10 top-1/2 -translate-y-1/2 z-40 h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            aria-label="Imagen anterior"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </motion.button>
-          <motion.button
-            type="button"
-            onClick={next}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="absolute right-4 md:right-8 lg:right-10 top-1/2 -translate-y-1/2 z-40 h-12 w-12 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            aria-label="Siguiente imagen"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </motion.button>
-        </>
-      )}
+        {/* Capa principal con crossfade */}
+        <div className="absolute inset-0">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: TRANSITION_DURATION, ease: easing }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={slides[index]}
+                alt={`${project.title} — imagen ${index + 1}`}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-contain md:object-cover h-auto"
+              />
+              <div
+                className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.12),transparent_38%),linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0.3)_34%,rgba(8,8,8,0.8)_100%)]"
+                aria-hidden
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-      {/* Card centrada y compacta */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-4 md:p-8 pointer-events-none">
+        {/* Contador superior — anclado a la imagen */}
+        {hasMultiple && (
+          <div className="absolute top-4 md:top-10 left-1/2 -translate-x-1/2 z-20">
+            <span className="inline-flex items-center rounded-full border border-white/30 bg-black/25 px-3 py-1.5 md:px-4 md:py-2 font-mono text-[10px] md:text-sm text-white/90 tracking-[0.28em] backdrop-blur-md">
+              {formatCounter(index, slides.length)}
+            </span>
+          </div>
+        )}
+
+        {/* Flechas */}
+        {hasMultiple && (
+          <>
+            <motion.button
+              type="button"
+              onClick={prev}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="absolute left-3 md:left-8 lg:left-10 top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              aria-label="Imagen anterior"
+            >
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={next}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="absolute right-3 md:right-8 lg:right-10 top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-14 md:w-14 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              aria-label="Siguiente imagen"
+            >
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+            </motion.button>
+          </>
+        )}
+      </div>
+      {/* Card: en mobile va debajo de la imagen (flujo normal), en desktop overlay sobre la imagen */}
+      <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-20 px-4 pt-4 pb-5 md:p-8 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: easing }}
-          className="pointer-events-auto mx-auto w-full max-w-lg rounded-2xl border border-white/20 bg-black/30 px-5 py-4 md:px-6 md:py-5 backdrop-blur-md shadow-[0_20px_48px_rgba(0,0,0,0.3)] text-center"
+          className="pointer-events-auto mx-auto w-full max-w-lg rounded-2xl border border-white/10 md:border-white/20 bg-black/50 md:bg-black/30 px-5 py-4 md:px-6 md:py-5 backdrop-blur-md shadow-[0_20px_48px_rgba(0,0,0,0.3)] text-center"
         >
-          <h1 className="font-serif text-xl md:text-2xl lg:text-3xl font-bold text-white leading-[1.15] tracking-tight mb-2">
+          <h1 className="font-serif text-lg md:text-2xl lg:text-3xl font-bold text-white leading-[1.15] tracking-tight mb-2">
             {project.title}
           </h1>
           {tagline && (
@@ -161,7 +163,7 @@ export default function ProjectDetailHeroPremium({ project }) {
             </p>
           )}
           {hasMultiple && (
-            <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex items-center justify-center gap-2 mt-3 md:mt-4">
               {slides.map((_, i) => (
                 <button
                   key={i}
