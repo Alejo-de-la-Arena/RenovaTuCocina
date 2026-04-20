@@ -54,6 +54,17 @@ const SERVICIOS = [
     mensaje: 'Hola, me interesa mejorar la *iluminación y herrajes* de mi cocina. ¿Tienen opciones?',
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
   },
+  {
+    id: 'electro',
+    label: 'Integración de electrodomésticos',
+    short: 'Electro',
+    tiempo: '1–2 semanas',
+    tipo: 'Optimización funcional',
+    beneficios: ['Reubicación de equipos para un uso más cómodo.', 'Frentes y nichos integrados para un look limpio.'],
+    incluye: 'Revisión de medidas, propuesta de integración y ajuste en obra.',
+    mensaje: 'Hola, me interesa la *integración de electrodomésticos* en mi cocina. ¿Podrían asesorarme?',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
+  },
 ];
 
 export default function ServiciosPremium() {
@@ -87,7 +98,7 @@ export default function ServiciosPremium() {
         </motion.div>
 
         {/* Selector tipo cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-4 mb-8 md:mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 md:gap-4 mb-8 md:mb-16">
           {SERVICIOS.map((s) => {
             const isSelected = selected.id === s.id;
             return (

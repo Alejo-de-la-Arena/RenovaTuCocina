@@ -58,32 +58,8 @@ export default function ProjectDetailHeroPremium({ project }) {
       onMouseEnter={() => hasMultiple && setIsPaused(true)}
       onMouseLeave={() => hasMultiple && setIsPaused(false)}
     >
-      {/* Wrapper de imagen: altura fija en mobile (sin saltos), full screen en desktop */}
-      <div className="relative h-[65vh] min-h-[420px] max-h-[640px] w-full md:h-auto md:min-h-0 md:max-h-none md:absolute md:inset-0">
-        {/* Capa de fondo blur */}
-        <div className="absolute inset-0">
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={`bg-${index}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: TRANSITION_DURATION, ease: easing }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={slides[index]}
-                alt=""
-                fill
-                priority={index === 0}
-                sizes="100vw"
-                className="object-cover scale-110 blur-2xl opacity-70 md:hidden"
-                aria-hidden
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
+      {/* Wrapper de imagen: en mobile solo la imagen (sin área extra) */}
+      <div className="relative aspect-[4/3] w-full md:h-auto md:min-h-0 md:max-h-none md:absolute md:inset-0 md:aspect-auto">
         {/* Capa principal con crossfade */}
         <div className="absolute inset-0">
           <AnimatePresence initial={false}>
@@ -101,10 +77,10 @@ export default function ProjectDetailHeroPremium({ project }) {
                 fill
                 priority={index === 0}
                 sizes="100vw"
-                className="object-contain md:object-cover h-auto"
+                className="object-cover"
               />
               <div
-                className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.12),transparent_38%),linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0.3)_34%,rgba(8,8,8,0.8)_100%)]"
+                className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/20 md:bg-[radial-gradient(circle_at_18%_24%,rgba(255,255,255,0.12),transparent_38%),linear-gradient(180deg,rgba(8,8,8,0.15)_0%,rgba(8,8,8,0.3)_34%,rgba(8,8,8,0.8)_100%)]"
                 aria-hidden
               />
             </motion.div>
@@ -146,8 +122,8 @@ export default function ProjectDetailHeroPremium({ project }) {
           </>
         )}
       </div>
-      {/* Card: en mobile va debajo de la imagen (flujo normal), en desktop overlay sobre la imagen */}
-      <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-20 px-4 pt-4 pb-5 md:p-8 pointer-events-none">
+      {/* Card: en mobile va justo debajo de la imagen, en desktop overlay */}
+      <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-20 px-4 pt-3 pb-5 md:p-8 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
