@@ -113,6 +113,19 @@ function FormRenovar({ form, setForm, errors, inputClass }) {
 }
 
 function FormDesdeCero({ form, setForm, errors, inputClass }) {
+  const materialesSeleccionados = Array.isArray(form.materiales)
+    ? form.materiales
+    : form.materiales
+      ? [form.materiales]
+      : [];
+
+  const toggleMaterial = (value) => {
+    const next = materialesSeleccionados.includes(value)
+      ? materialesSeleccionados.filter((v) => v !== value)
+      : [...materialesSeleccionados, value];
+    setForm({ ...form, materiales: next });
+  };
+
   return (
     <div className="grid md:grid-cols-2 gap-5 md:gap-6">
       <Select
@@ -132,14 +145,50 @@ function FormDesdeCero({ form, setForm, errors, inputClass }) {
         className={inputClass}
         error={errors.medidas}
       />
-      <Select
-        id="materiales"
-        label="Materiales preferidos"
-        value={form.materiales || ''}
-        onChange={(e) => setForm({ ...form, materiales: e.target.value })}
-        options={MATERIALES_OPTIONS}
-        error={errors.materiales}
-      />
+      <fieldset className="md:col-span-2 space-y-2">
+        <legend
+          className={cn(
+            'block text-sm font-semibold text-neutral-text mb-1',
+            inputClass && 'text-[#1a1612]',
+          )}
+        >
+          Materiales preferidos
+        </legend>
+        <p className={cn('text-xs -mt-0.5 mb-2', inputClass ? 'text-[#8a8277]' : 'text-neutral-muted')}>
+          Podés elegir más de uno.
+        </p>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          {MATERIALES_OPTIONS.map((o) => {
+            const checked = materialesSeleccionados.includes(o.value);
+            return (
+              <label
+                key={o.value}
+                className={cn(
+                  'flex cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2.5 text-sm transition-colors',
+                  checked
+                    ? 'border-primary/40 bg-primary/5 text-neutral-text ring-1 ring-primary/15'
+                    : 'border-neutral-border bg-white text-neutral-text hover:border-neutral-border/80',
+                  inputClass && 'border-[#e3dcd4] bg-[#fdfcfa]',
+                  inputClass && checked && 'border-primary/35 bg-white ring-primary/20',
+                )}
+              >
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 shrink-0 rounded border-neutral-border text-primary focus:ring-primary/30"
+                  checked={checked}
+                  onChange={() => toggleMaterial(o.value)}
+                />
+                <span>{o.label}</span>
+              </label>
+            );
+          })}
+        </div>
+        {errors.materiales ? (
+          <p className="mt-1 text-sm text-red-600" role="alert">
+            {errors.materiales}
+          </p>
+        ) : null}
+      </fieldset>
       <Input
         id="zona"
         label="Zona"
@@ -235,7 +284,9 @@ export default function ContactoForm({ variant = 'home' }) {
     if (motivo === 'desde-cero') {
       if (!form.tipoCocina) newErrors.tipoCocina = 'Elegí el tipo de cocina';
       if (!form.medidas?.trim()) newErrors.medidas = 'Indicá las medidas';
-      if (!form.materiales) newErrors.materiales = 'Elegí un material';
+      const mats = form.materiales;
+      if (!(Array.isArray(mats) ? mats.length > 0 : Boolean(mats)))
+        newErrors.materiales = 'Elegí al menos un material';
       if (!form.zona?.trim()) newErrors.zona = 'Indicá la zona';
       if (!form.mensaje?.trim()) newErrors.mensaje = 'Contanos sobre tu proyecto';
     }
