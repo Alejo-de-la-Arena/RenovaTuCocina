@@ -1,4 +1,4 @@
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://renovatucocina.com';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://renovatucocina.com.ar';
 
 export default function robots() {
   return {

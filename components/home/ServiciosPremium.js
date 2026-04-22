@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, MessageCircle } from 'lucide-react';
+import { Check, MessageCircle, X } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
@@ -11,64 +11,67 @@ import { cn } from '@/lib/cn';
 
 const SERVICIOS = [
   {
-    id: 'frentes',
-    label: 'Cambio de frentes',
-    short: 'Frentes',
+    id: 'estetica',
+    label: 'Renovación Estética',
+    short: 'Estética',
     tiempo: '2–3 semanas',
-    tipo: 'Renovación de módulos',
-    beneficios: ['Nuevo aspecto sin cambiar estructura.', 'Melamina, laqueado o chapas.'],
-    incluye: 'Diseño de color, fabricación e instalación de frentes.',
-    mensaje: 'Hola, me interesa renovar mi cocina con *cambio de frentes*. ¿Podrían darme más información?',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+    tipo: 'Actualización visual',
+    beneficios: [
+      'Cambio de frentes, herrajes y actualización visual.',
+      'Mantenemos tu estructura actual.',
+    ],
+    incluye: 'Diseño de color y montaje rápido para modernizar el espacio.',
+    mensaje: 'Hola, me interesa una *Renovación Estética* para mi cocina. ¿Podrían darme más información?',
+    image: 'https://images.unsplash.com/photo-1764526612515-6b4ab2868a6e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    id: 'mesada',
-    label: 'Mesada',
-    short: 'Mesada',
-    tiempo: '1–2 semanas',
-    tipo: 'Reemplazo de superficies',
-    beneficios: ['Nueva mesada y bacha. Cuarzo, granito o compacto.', 'Opcional: nuevo splash.'],
-    incluye: 'Medición, elección de material, corte e instalación.',
-    mensaje: 'Hola, quiero cambiar la *mesada* de mi cocina. ¿Podrían cotizarme?',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800',
+    id: 'funcional',
+    label: 'Renovación Funcional',
+    short: 'Funcional',
+    tiempo: '4–5 semanas',
+    tipo: 'Optimización de uso',
+    beneficios: [
+      'Reconfiguración del layout para maximizar la comodidad.',
+      'Fabricación de nuevos módulos y mesadas.',
+      'Cambio de mesada (opcional).',
+    ],
+    incluye: 'Diseño a medida para optimizar el espacio y el almacenamiento.',
+    mensaje: 'Hola, me interesa una *Renovación Funcional* para mi cocina. ¿Podrían asesorarme?',
+    image: 'https://images.unsplash.com/photo-1758565811352-a439bd6f956e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    id: 'reconfig',
-    label: 'Reconfiguración completa',
-    short: 'Completa',
-    tiempo: '4–6 semanas',
-    tipo: 'Rediseño integral',
-    beneficios: ['Rediseño del layout. Más espacio, mejor flujo.', 'Nuevos módulos, mesada, iluminación.'],
-    incluye: 'Diseño integral, fabricación, instalación y detalles.',
-    mensaje: 'Hola, busco una *reconfiguración completa* de mi cocina. ¿Podemos coordinar una visita?',
-    image: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800',
+    id: 'integral',
+    label: 'Renovación Integral',
+    short: 'Integral',
+    tiempo: '6–8 semanas',
+    tipo: 'Recambio completo',
+    beneficios: [
+      'Desmantelamiento del amoblamiento existente y reemplazo total.',
+      'Instalación de todo el mobiliario y superficies desde cero.',
+    ],
+    incluye: 'El servicio completo de recambio de amoblamiento, sin demoliciones ni escombros.',
+    mensaje: 'Hola, estoy buscando una *Renovación Integral* de cocina. ¿Podemos coordinar una visita?',
+    image: 'https://images.unsplash.com/photo-1682888818650-0a7cbb35287d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    id: 'iluminacion',
-    label: 'Iluminación y herrajes',
-    short: 'Iluminación',
-    tiempo: '3–7 días',
-    tipo: 'Detalle y acabados',
-    beneficios: ['LED bajo muebles, spots y herrajes premium.', 'Impacto visual con poca obra.'],
-    incluye: 'Asesoramiento, materiales e instalación.',
-    mensaje: 'Hola, me interesa mejorar la *iluminación y herrajes* de mi cocina. ¿Tienen opciones?',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-  },
-  {
-    id: 'electro',
-    label: 'Integración de electrodomésticos',
-    short: 'Electro',
-    tiempo: '1–2 semanas',
-    tipo: 'Optimización funcional',
-    beneficios: ['Reubicación de equipos para un uso más cómodo.', 'Frentes y nichos integrados para un look limpio.'],
-    incluye: 'Revisión de medidas, propuesta de integración y ajuste en obra.',
-    mensaje: 'Hola, me interesa la *integración de electrodomésticos* en mi cocina. ¿Podrían asesorarme?',
-    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
+    id: 'ampliacion',
+    label: 'Renovación con Ampliación',
+    short: 'Ampliación',
+    tiempo: '+8 semanas',
+    tipo: 'Proyecto de gran escala',
+    beneficios: [
+      'Integración de ambientes: unimos la cocina con el living o comedor.',
+      'Obra civil completa: demolición, plomería, electricidad, pisos, etc.',
+    ],
+    incluye: 'Proyectos de gran escala que transforman la dinámica de la casa.',
+    mensaje: 'Hola, me interesa una *Renovación con Ampliación* para integrar ambientes. ¿Podrían asesorarme?',
+    image: 'https://images.unsplash.com/photo-1643034738686-d69e7bc047e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ];
 
 export default function ServiciosPremium() {
   const [selected, setSelected] = useState(SERVICIOS[0]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl(selected.mensaje) : null;
 
   return (
@@ -98,14 +101,17 @@ export default function ServiciosPremium() {
         </motion.div>
 
         {/* Selector tipo cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 md:gap-4 mb-8 md:mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-4 mb-8 md:mb-16">
           {SERVICIOS.map((s) => {
             const isSelected = selected.id === s.id;
             return (
               <motion.button
                 key={s.id}
                 type="button"
-                onClick={() => setSelected(s)}
+                onClick={() => {
+                  setSelected(s);
+                  setIsDialogOpen(false);
+                }}
                 className={cn(
                   'relative rounded-2xl overflow-hidden text-left p-4 sm:p-5 md:p-6 transition-all duration-500 min-h-[96px]',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-text',
@@ -179,14 +185,35 @@ export default function ServiciosPremium() {
                 ))}
               </ul>
               <p className="text-sm text-white/70 mb-8">{selected.incluye}</p>
-              {waUrl && (
-                <Button
-                  href={waUrl}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300 min-h-[48px]"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Consultar por WhatsApp
-                </Button>
+              {selected.id === 'ampliacion' ? (
+                <div className="flex flex-col sm:flex-row sm:items-stretch gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsDialogOpen(true)}
+                    className="w-full sm:w-auto min-h-[48px] border-white/60 text-white hover:bg-white/15"
+                  >
+                    Conocer más
+                  </Button>
+                  {waUrl && (
+                    <Button
+                      href={waUrl}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[48px] bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300"
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      Consultar por WhatsApp
+                    </Button>
+                  )}
+                </div>
+              ) : (
+                waUrl && (
+                  <Button
+                    href={waUrl}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300 min-h-[48px]"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Consultar por WhatsApp
+                  </Button>
+                )
               )}
               {!waUrl && (
                 <p className="text-white/50 text-sm">
@@ -195,6 +222,83 @@ export default function ServiciosPremium() {
               )}
             </div>
           </motion.div>
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isDialogOpen && selected.id === 'ampliacion' && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm mt-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsDialogOpen(false)}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                transition={{ duration: 0.25 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-2xl rounded-3xl border border-white/20 bg-[#18120d] p-6 md:p-8 shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
+              >
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div>
+                    <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.16em]">
+                      Proyecto de gran escala
+                    </p>
+                    <h4 className="font-serif text-2xl md:text-3xl text-white mt-1">Renovación con Ampliación</h4>
+                    <p className="text-white/75 text-sm mt-2">
+                      Tiempo estimado: <strong className="text-white">+8 semanas</strong>
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsDialogOpen(false)}
+                    className="rounded-full border border-white/20 p-2 text-white/80 hover:text-white hover:border-white/40 transition-colors"
+                    aria-label="Cerrar diálogo"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <ul className="space-y-3 mb-5">
+                  <li className="flex items-start gap-3 text-white/90">
+                    <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
+                    <span>Integración de ambientes: unimos la cocina con el living o comedor.</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-white/90">
+                    <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
+                    <span>Obra civil completa: demolición, plomería, electricidad, pisos, etc.</span>
+                  </li>
+                </ul>
+
+                <p className="text-white/75 mb-4">
+                  Proyectos de gran escala que transforman la dinámica de la casa.
+                </p>
+                <p className="text-white/70 text-sm leading-relaxed mb-6">
+                  En esta modalidad trabajamos con planificación por etapas, reuniones semanales de avance,
+                  coordinación de proveedores y control de terminaciones premium. También podemos sumar
+                  iluminación escénica, isla central multifunción y soluciones de guardado oculto para mejorar
+                  la estética y el uso diario del espacio.
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  <Button onClick={() => setIsDialogOpen(false)} className="min-h-[44px]">
+                    Entendido
+                  </Button>
+                  {waUrl && (
+                    <Button
+                      href={waUrl}
+                      className="min-h-[44px] bg-white/10 hover:bg-white/20 text-white border border-white/30 shadow-none"
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      Consultar este servicio
+                    </Button>
+                  )}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </Container>
     </section>
