@@ -108,14 +108,14 @@ export default function Header() {
       )}
     >
       <Container>
-        <nav className="flex items-center justify-between h-16 md:h-20" aria-label="Navegación principal">
+        <nav className="flex items-center justify-between h-20 md:h-24" aria-label="Navegación principal">
           <Link href="/" className="flex items-center shrink-0" aria-label="MDV Proyectos - Inicio">
             <img
-              src="/assets/brand/logo-mdv.webp"
-              alt="MDV Proyectos"
-              className="h-10 md:h-16 w-auto object-contain text-neutral-text hover:opacity-90 transition-opacity duration-200"
-              width={140}
-              height={36}
+              src="/assets/brand/RTC-Logo.png"
+              alt="Renova Tu Cocina"
+              className="h-14 sm:h-14 md:h-18 w-auto object-contain text-neutral-text hover:opacity-90 transition-opacity duration-200"
+              width={180}
+              height={64}
             />
           </Link>
 
@@ -203,11 +203,11 @@ export default function Header() {
                 >
                   <div className="flex items-center justify-between border-b border-neutral-border/80 px-5 pt-[env(safe-area-inset-top)] pb-4">
                     <img
-                      src="/assets/brand/logo-mdv.webp"
-                      alt="MDV Proyectos"
-                      className="h-12 mt-4 w-auto object-contain text-neutral-text"
-                      width={120}
-                      height={30}
+                      src="/assets/brand/RTC-Logo.png"
+                      alt="Renova Tu Cocina"
+                      className="h-14 mt-4 w-auto object-contain text-neutral-text"
+                      width={180}
+                      height={64}
                     />
                     <button
                       ref={closeButtonRef}

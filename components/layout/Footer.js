@@ -33,11 +33,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block" aria-label="MDV Proyectos - Inicio">
               <img
-                src="/assets/brand/mdv-logo-footer.webp"
-                alt="MDV Proyectos"
-                className="h-8 md:h-16 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
-                width={140}
-                height={36}
+                src="/assets/brand/RTC-Logo.png"
+                alt="Renova Tu Cocina"
+                className="h-12 md:h-14 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
+                width={180}
+                height={64}
               />
             </Link>
             <p className="mt-5 text-white/70 text-sm leading-relaxed max-w-xs">
