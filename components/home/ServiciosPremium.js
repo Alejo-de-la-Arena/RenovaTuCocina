@@ -37,7 +37,7 @@ const SERVICIOS = [
     ],
     incluye: 'Diseño a medida para optimizar el espacio y el almacenamiento.',
     mensaje: 'Hola, me interesa una *Renovación Funcional* para mi cocina. ¿Podrían asesorarme?',
-    image: 'https://images.unsplash.com/photo-1758565811352-a439bd6f956e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'integral',
