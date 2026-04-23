@@ -26,9 +26,6 @@ export default function ProjectCard({ project, index = 0 }) {
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <p className="absolute left-3 top-3 rounded-full border border-white/35 bg-black/35 px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-              Caso real
-            </p>
           </div>
           <div className="flex flex-1 flex-col p-6">
             <div className="mb-3 flex flex-wrap gap-2">
