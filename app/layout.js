@@ -31,6 +31,11 @@ export const metadata = {
     'Diseño, fabricación e instalación de cocinas a medida. Renovación integral o cocina desde cero. Zona norte y CABA. Antes y después reales.',
   keywords: ['cocinas', 'renovación', 'diseño', 'MDV', 'cocina a medida', 'zona norte'],
   authors: [{ name: 'MDV Proyectos' }],
+  icons: {
+    icon: [{ url: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png' }],
+    shortcut: ['https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png'],
+    apple: [{ url: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png' }],
+  },
   openGraph: {
     type: 'website',
   },
