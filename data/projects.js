@@ -25,7 +25,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200',
       'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200',
     ],
-    imagenPrincipal: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600',
+    imagenPrincipal: 'https://images.unsplash.com/photo-1617228069096-4638a7ffc906?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     slug: 'cocina-americana-san-isidro',
@@ -47,7 +47,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
       'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200',
     ],
-    imagenPrincipal: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1600',
+    imagenPrincipal: 'https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     slug: 'renovacion-rapida-olivos',
@@ -69,7 +69,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200',
       'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
     ],
-    imagenPrincipal: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1600',
+    imagenPrincipal: 'https://images.unsplash.com/photo-1601760561441-16420502c7e0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     slug: 'cocina-u-palermo',
@@ -91,7 +91,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200',
     ],
-    imagenPrincipal: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600',
+    imagenPrincipal: 'https://plus.unsplash.com/premium_photo-1684445034834-c8dec93ed218?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     slug: 'cocina-lineal-martinez',
@@ -113,7 +113,7 @@ export const projects = [
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200',
       'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200',
     ],
-    imagenPrincipal: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600',
+    imagenPrincipal: 'https://images.unsplash.com/photo-1565183928294-7063f23ce0f8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ];
 

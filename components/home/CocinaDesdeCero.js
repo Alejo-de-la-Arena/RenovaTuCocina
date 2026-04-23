@@ -22,7 +22,7 @@ const COCINAS = [
     ],
     ideal: 'Casas o deptos con cocina integrada',
     mensaje: 'Hola, me interesa una *cocina moderna integrada* desde cero. ¿Podemos coordinar una propuesta?',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400',
+    image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'familiar',
@@ -35,7 +35,7 @@ const COCINAS = [
     ],
     ideal: 'Familias que usan mucho la cocina',
     mensaje: 'Hola, quiero cotizar una *cocina familiar completa* desde cero. ¿Qué opciones recomiendan?',
-    image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1400',
+    image: 'https://images.unsplash.com/photo-1601760561441-16420502c7e0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: 'premium',
