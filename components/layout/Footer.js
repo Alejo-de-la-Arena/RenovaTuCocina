@@ -33,9 +33,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block" aria-label="MDV Proyectos - Inicio">
               <img
-                src="/assets/brand/RTC-Logo.png"
+                src="https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png"
                 alt="Renova Tu Cocina"
-                className="h-12 md:h-14 w-auto object-contain opacity-95 hover:opacity-100 transition-opacity"
+                className="h-12 md:h-18 w-[200px] object-contain opacity-100 hover:opacity-100 transition-opacity"
                 width={180}
                 height={64}
               />
