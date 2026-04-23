@@ -33,7 +33,7 @@ export default function HeroPremium({
             className="object-cover object-center"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/15 to-black/20"
+            className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/25 to-black/20"
             aria-hidden
           />
         </motion.div>
