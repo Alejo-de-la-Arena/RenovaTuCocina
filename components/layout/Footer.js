@@ -67,11 +67,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 shrink-0 text-primary-400" />
-                (011) 1234-5678
+                11 6205-0737
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 shrink-0 text-primary-400" />
-                info@mdvproyectos.com
+                info@renovatucocina.com.ar
               </li>
             </ul>
           </div>

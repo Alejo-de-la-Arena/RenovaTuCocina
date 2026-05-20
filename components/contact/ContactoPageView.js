@@ -61,7 +61,7 @@ export default function ContactoPageView() {
                       </span>
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#8a8277]">Teléfono</span>
-                        <p className="mt-0.5 font-medium text-[#1a1612]">(011) 1234-5678</p>
+                        <p className="mt-0.5 font-medium text-[#1a1612]">11 6205-0737</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
@@ -70,7 +70,7 @@ export default function ContactoPageView() {
                       </span>
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#8a8277]">Email</span>
-                        <p className="mt-0.5 break-all font-medium text-[#1a1612]">info@mdvproyectos.com</p>
+                        <p className="mt-0.5 break-all font-medium text-[#1a1612]">info@renovatucocina.com.ar</p>
                       </div>
                     </li>
                     <li className="flex gap-4">
