@@ -48,8 +48,8 @@ const ESTADO_OPTIONS = [
 const MATERIALES_OPTIONS = [
   { value: 'melamina', label: 'Melamina' },
   { value: 'laqueado', label: 'Laqueado' },
-  { value: 'MDF', label: 'MDF' },
-  { value: 'madera', label: 'Madera natural' },
+  { value: 'enchapado', label: 'Enchapado natural' },
+  { value: 'iluminación', label: 'Iluminación Led' },
   { value: 'cuarzo', label: 'Mesada cuarzo' },
   { value: 'granito', label: 'Mesada granito' },
 ];
@@ -59,7 +59,7 @@ function FormRenovar({ form, setForm, errors, setErrors }) {
     <>
       <Input
         id="medidas"
-        label="Medidas aprox."
+        label="Dimensiones aprox."
         placeholder="Ej: 3m x 2m"
         value={form.medidas}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}
@@ -127,7 +127,7 @@ function FormDesdeCero({ form, setForm, errors }) {
       />
       <Input
         id="medidas"
-        label="Medidas aprox."
+        label="Dimensiones aprox."
         placeholder="Ej: 4m x 3m"
         value={form.medidas}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}

@@ -47,8 +47,8 @@ const SERVICIOS = [
     tiempo: '6–8 semanas',
     tipo: 'Recambio completo',
     beneficios: [
-      'Desmantelamiento del amoblamiento existente y reemplazo total.',
-      'Instalación de todo el mobiliario y superficies desde cero.',
+      'Desarme de amoblamiento existente y reemplazo total.',
+      'Instalación del nuevo diseño y superficies desde cero.',
     ],
     incluye: 'El servicio completo de recambio de amoblamiento, sin demoliciones ni escombros.',
     mensaje: 'Hola, estoy buscando una *Renovación Integral* de cocina. ¿Podemos coordinar una visita?',
@@ -61,7 +61,7 @@ const SERVICIOS = [
     tiempo: '+8 semanas',
     tipo: 'Proyecto de gran escala',
     beneficios: [
-      'Integración de ambientes: unimos la cocina con el living o comedor.',
+      'Integración: expandimos la cocina hacia otros ambientes.',
       'Obra civil completa: demolición, plomería, electricidad, pisos, etc.',
     ],
     incluye: 'Proyectos de gran escala que transforman la dinámica de la casa.',
@@ -179,9 +179,6 @@ export default function ServiciosPremium() {
               <h3 className="font-serif text-2xl md:text-3xl font-semibold text-white mb-2 tracking-tight">
                 {selected.label}
               </h3>
-              <p className="text-white/70 text-sm mb-6">
-                Tiempo estimado: <strong className="text-white">{selected.tiempo}</strong>
-              </p>
               <ul className="space-y-3 mb-6">
                 {selected.beneficios.map((b, i) => (
                   <li key={i} className="flex items-start gap-3 text-white/90">
@@ -190,6 +187,9 @@ export default function ServiciosPremium() {
                   </li>
                 ))}
               </ul>
+              <p className="text-white/70 text-sm mb-6">
+                Tiempo estimado: <strong className="text-white">{selected.tiempo}</strong>
+              </p>
               <p className="text-sm text-white/70 mb-8">{selected.incluye}</p>
               {selected.id === 'ampliacion' ? (
                 <div className="flex flex-col sm:flex-row sm:items-stretch gap-3">
@@ -255,9 +255,6 @@ export default function ServiciosPremium() {
                           Proyecto de gran escala
                         </p>
                         <h4 className="font-serif text-2xl md:text-3xl text-white mt-1">Renovación con Ampliación</h4>
-                        <p className="text-white/75 text-sm mt-2">
-                          Tiempo estimado: <strong className="text-white">+8 semanas</strong>
-                        </p>
                       </div>
                       <button
                         type="button"
@@ -272,7 +269,7 @@ export default function ServiciosPremium() {
                     <ul className="space-y-3 mb-5">
                       <li className="flex items-start gap-3 text-white/90">
                         <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
-                        <span>Integración de ambientes: unimos la cocina con el living o comedor.</span>
+                        <span>Integración: expandimos la cocina hacia otros ambientes.</span>
                       </li>
                       <li className="flex items-start gap-3 text-white/90">
                         <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
@@ -280,6 +277,9 @@ export default function ServiciosPremium() {
                       </li>
                     </ul>
 
+                    <p className="text-white/75 text-sm mb-4">
+                      Tiempo estimado: <strong className="text-white">+8 semanas</strong>
+                    </p>
                     <p className="text-white/75 mb-4">
                       Proyectos de gran escala que transforman la dinámica de la casa.
                     </p>

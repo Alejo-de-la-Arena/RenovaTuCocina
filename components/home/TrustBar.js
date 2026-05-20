@@ -6,7 +6,7 @@ const TRUST_ITEMS = [
   { value: '+10', label: 'años' },
   { value: '+200', label: 'proyectos' },
   { value: 'Zona Norte y CABA', label: '' },
-  { value: '24 h', label: 'respuesta' },
+  { value: '24hs', label: 'respuesta' },
 ];
 
 export default function TrustBar() {

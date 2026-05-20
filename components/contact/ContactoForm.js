@@ -45,11 +45,11 @@ const ESTADO_OPTIONS = [
 const MATERIALES_OPTIONS = [
   { value: 'melamina', label: 'Melamina' },
   { value: 'laqueado', label: 'Laqueado' },
-  { value: 'MDF', label: 'MDF' },
-  { value: 'madera', label: 'Madera natural' },
+  { value: 'enchapado', label: 'Enchapado natural' },
+  { value: 'iluminación', label: 'Iluminación Led' },
   { value: 'cuarzo', label: 'Mesada cuarzo' },
   { value: 'granito', label: 'Mesada granito' },
-];
+];  
 
 const formEase = [0.23, 1, 0.32, 1];
 
@@ -58,7 +58,7 @@ function FormRenovar({ form, setForm, errors, inputClass }) {
     <div className="grid md:grid-cols-2 gap-5 md:gap-6">
       <Input
         id="medidas"
-        label="Medidas aprox."
+        label="Dimensiones aprox."
         placeholder="Ej: 3m x 2m"
         value={form.medidas || ''}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}
@@ -138,7 +138,7 @@ function FormDesdeCero({ form, setForm, errors, inputClass }) {
       />
       <Input
         id="medidas"
-        label="Medidas aprox."
+        label="Dimensiones aprox."
         placeholder="Ej: 4m x 3m"
         value={form.medidas || ''}
         onChange={(e) => setForm({ ...form, medidas: e.target.value })}
@@ -410,7 +410,7 @@ export default function ContactoForm({ variant = 'home' }) {
             className="space-y-5"
           >
             <p className={cn('font-semibold text-neutral-text', isPage && 'font-serif text-base text-[#1a1612] md:text-lg')}>
-              {isPage ? 'Tu proyecto desde cero' : 'Paso 2 — Tu proyecto'}
+              {isPage ? 'Tu cocina desde cero' : 'Paso 2 — Tu proyecto'}
             </p>
             <FormDesdeCero form={form} setForm={setForm} errors={errors} inputClass={inputClassPage} />
           </motion.div>
@@ -478,7 +478,7 @@ export default function ContactoForm({ variant = 'home' }) {
           Empecemos tu proyecto
         </h2>
         <p className="text-neutral-muted max-w-xl mx-auto text-lg">
-          Contanos en dos pasos y te respondemos por WhatsApp en 24 h.
+          Contanos en dos pasos y te respondemos por WhatsApp en 24hs.
         </p>
       </motion.div>
 

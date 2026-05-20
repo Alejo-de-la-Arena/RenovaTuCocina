@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
+import { getTipologiaLabel, getRenovacionLabel } from '@/lib/projectFilterLabels';
 
 export default function ProjectCard({ project, index = 0 }) {
   return (
@@ -29,7 +30,12 @@ export default function ProjectCard({ project, index = 0 }) {
           </div>
           <div className="flex flex-1 flex-col p-6">
             <div className="mb-3 flex flex-wrap gap-2">
-              <Badge variant="primary">{project.tipo}</Badge>
+              {project.renovacion && (
+                <Badge variant="primary">{getRenovacionLabel(project.renovacion)}</Badge>
+              )}
+              {project.tipo && (
+                <Badge variant={project.renovacion ? 'default' : 'primary'}>{getTipologiaLabel(project.tipo)}</Badge>
+              )}
               {project.materiales?.[0] && <Badge>{project.materiales[0]}</Badge>}
             </div>
             <h3 className="mb-2 font-serif text-xl font-semibold tracking-tight text-neutral-text transition-colors group-hover:text-primary">

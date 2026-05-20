@@ -8,8 +8,8 @@ import { staggerContainer, staggerItem } from '@/lib/motion';
 const PASOS = [
   { paso: 1, titulo: 'Consultá', desc: 'Contanos tu proyecto por WhatsApp o formulario.' },
   { paso: 2, titulo: 'Visita', desc: 'Coordinamos visita técnica sin cargo.' },
-  { paso: 3, titulo: 'Presupuesto', desc: 'Recibís propuesta detallada en 48-72 hs.' },
-  { paso: 4, titulo: 'Obra', desc: 'Fabricación e instalación según cronograma acordado.' },
+  { paso: 3, titulo: 'Presupuesto', desc: 'Recibís propuesta detallada en  48-72 hs hábiles.' },
+  { paso: 4, titulo: 'Entrega', desc: 'Fabricación e instalación según cronograma acordado.' },
 ];
 
 export default function HomeTimeline() {

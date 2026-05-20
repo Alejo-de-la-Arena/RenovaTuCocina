@@ -4,9 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check, Clock3, ListFilter, MessageCircle } from 'lucide-react';
+import { ArrowRight, Check, Clock3, ListFilter } from 'lucide-react';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { cn } from '@/lib/cn';
 import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -147,11 +148,6 @@ export default function CocinaDesdeCero() {
             <h3 className="font-serif text-2xl md:text-3xl text-neutral-text leading-tight">{selected.nombre}</h3>
             <p className="text-neutral-muted mt-2">{selected.resumen}</p>
 
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3.5 py-2 text-sm text-neutral-text">
-              <Clock3 className="w-4 h-4 text-primary" />
-              Tiempo estimado: {selected.duracion}
-            </div>
-
             <ul className="mt-5 space-y-2.5">
               {selected.beneficios.map((beneficio) => (
                 <li key={beneficio} className="flex items-start gap-2.5 text-neutral-text">
@@ -160,6 +156,11 @@ export default function CocinaDesdeCero() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3.5 py-2 text-sm text-neutral-text">
+              <Clock3 className="w-4 h-4 text-primary" />
+              Tiempo estimado: {selected.duracion}
+            </div>
 
             <p className="text-sm text-neutral-muted mt-4">
               <span className="font-semibold text-neutral-text">Ideal para:</span> {selected.ideal}
@@ -171,7 +172,7 @@ export default function CocinaDesdeCero() {
                   href={waUrl}
                   className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <WhatsAppIcon className="w-5 h-5 shrink-0" />
                   Quiero esta cocina
                 </Button>
               ) : (

@@ -4,18 +4,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
-
-const tipoOptions = [
-  { value: 'L', label: 'En L' },
-  { value: 'U', label: 'En U' },
-  { value: 'lineal', label: 'Lineal' },
-  { value: 'isla', label: 'Con isla' },
-];
+import { TIPOLOGIA_OPTIONS, RENOVACION_OPTIONS, getTipologiaLabel, getRenovacionLabel } from '@/lib/projectFilterLabels';
 
 const materialOptions = [
   { value: 'melamina', label: 'Melamina' },
   { value: 'laqueado', label: 'Laqueado' },
-  { value: 'MDF', label: 'MDF' },
   { value: 'cuarzo', label: 'Cuarzo' },
   { value: 'compacto', label: 'Compacto' },
   { value: 'granito', label: 'Granito' },
@@ -28,17 +21,19 @@ function getLabel(value, options) {
 
 export default function FiltersBar({ onFilter, anos }) {
   const [search, setSearch] = useState('');
-  const [tipo, setTipo] = useState('');
+  const [renovacion, setRenovacion] = useState('');
+  const [tipologia, setTipologia] = useState('');
   const [material, setMaterial] = useState('');
   const [ano, setAno] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const activeCount = [search, tipo, material, ano].filter(Boolean).length;
+  const activeCount = [search, renovacion, tipologia, material, ano].filter(Boolean).length;
 
   const emit = (overrides = {}) => {
     const next = {
       search: overrides.search ?? search,
-      tipo: overrides.tipo ?? tipo,
+      renovacion: overrides.renovacion ?? renovacion,
+      tipologia: overrides.tipologia ?? tipologia,
       material: overrides.material ?? material,
       ano: overrides.ano ?? ano,
     };
@@ -51,10 +46,16 @@ export default function FiltersBar({ onFilter, anos }) {
     emit({ search: v });
   };
 
-  const handleTipoChange = (e) => {
+  const handleRenovacionChange = (e) => {
     const v = e.target.value;
-    setTipo(v);
-    emit({ tipo: v });
+    setRenovacion(v);
+    emit({ renovacion: v });
+  };
+
+  const handleTipologiaChange = (e) => {
+    const v = e.target.value;
+    setTipologia(v);
+    emit({ tipologia: v });
   };
 
   const handleMaterialChange = (e) => {
@@ -71,10 +72,11 @@ export default function FiltersBar({ onFilter, anos }) {
 
   const clearFilters = () => {
     setSearch('');
-    setTipo('');
+    setRenovacion('');
+    setTipologia('');
     setMaterial('');
     setAno('');
-    onFilter?.({ search: '', tipo: '', material: '', ano: '' });
+    onFilter?.({ search: '', renovacion: '', tipologia: '', material: '', ano: '' });
     setMobileOpen(false);
   };
 
@@ -86,7 +88,8 @@ export default function FiltersBar({ onFilter, anos }) {
 
   const chips = [];
   if (search) chips.push({ key: 'search', label: `"${search}"`, onRemove: () => { setSearch(''); emit({ search: '' }); } });
-  if (tipo) chips.push({ key: 'tipo', label: getLabel(tipo, tipoOptions), onRemove: () => { setTipo(''); emit({ tipo: '' }); } });
+  if (renovacion) chips.push({ key: 'renovacion', label: getRenovacionLabel(renovacion), onRemove: () => { setRenovacion(''); emit({ renovacion: '' }); } });
+  if (tipologia) chips.push({ key: 'tipologia', label: getTipologiaLabel(tipologia), onRemove: () => { setTipologia(''); emit({ tipologia: '' }); } });
   if (material) chips.push({ key: 'material', label: getLabel(material, materialOptions), onRemove: () => { setMaterial(''); emit({ material: '' }); } });
   if (ano) chips.push({ key: 'ano', label: ano, onRemove: () => { setAno(''); emit({ ano: '' }); } });
 
@@ -109,9 +112,15 @@ export default function FiltersBar({ onFilter, anos }) {
   const filtersContent = (
     <>
       {searchInput}
-      <select id="filter-tipo" value={tipo} onChange={handleTipoChange} className={`w-full md:w-36 ${selectBase}`} aria-label="Filtrar por tipo" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")" }}>
-        <option value="">Tipo</option>
-        {tipoOptions.map((o) => (
+      <select id="filter-renovacion" value={renovacion} onChange={handleRenovacionChange} className={`w-full md:w-40 ${selectBase}`} aria-label="Filtrar por tipo de renovación" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")" }}>
+        <option value="">Renovación</option>
+        {RENOVACION_OPTIONS.map((o) => (
+          <option key={o.value} value={o.value}>{o.label}</option>
+        ))}
+      </select>
+      <select id="filter-tipologia" value={tipologia} onChange={handleTipologiaChange} className={`w-full md:w-36 ${selectBase}`} aria-label="Filtrar por tipología" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")" }}>
+        <option value="">Tipología</option>
+        {TIPOLOGIA_OPTIONS.map((o) => (
           <option key={o.value} value={o.value}>{o.label}</option>
         ))}
       </select>

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
@@ -66,7 +66,7 @@ export default function ProyectosHero({ projects = [] }) {
   };
 
   return (
-    <section className="relative overflow-hidden pb-20 pt-14 sm:pb-24 sm:pt-16 md:pb-28 md:pt-20 lg:pb-32 lg:pt-24">
+    <section className="relative overflow-hidden pb-12 pt-14 sm:pb-12 sm:pt-16 md:pb-16 md:pt-20 lg:pb-16 lg:pt-24">
       {/* Fondo premium: base cálida + profundidad + glows suaves */}
       <div className="pointer-events-none absolute inset-0 bg-[#f3efe8]" aria-hidden />
       <div
@@ -302,27 +302,6 @@ export default function ProyectosHero({ projects = [] }) {
             </motion.div>
           </div>
         </div>
-
-        {/* Hint scroll — invita a bajar al grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.85, duration: 0.5 }}
-          className="mt-14 flex flex-col items-center justify-center gap-2 sm:mt-16 md:mt-20"
-        >
-          <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8a8277] sm:text-[11px]">
-            Deslizá para ver el listado
-          </span>
-          <motion.a
-            href="#proyectos-grid"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d9d0c4] bg-white/90 text-[#5c554c] shadow-sm backdrop-blur-sm transition hover:border-primary/30 hover:text-primary"
-            aria-label="Ir a proyectos"
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ChevronDown className="h-5 w-5" aria-hidden />
-          </motion.a>
-        </motion.div>
       </Container>
 
       {/* Transición suave hacia la sección blanca del filtro + grid */}

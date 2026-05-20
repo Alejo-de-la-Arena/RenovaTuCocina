@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import { staggerContainer, staggerItem } from '@/lib/motion';
+import { getTipologiaLabel, getRenovacionLabel } from '@/lib/projectFilterLabels';
 
 /**
  * @param {object} props
@@ -155,9 +156,20 @@ export default function ProyectosPremium({ featuredProjects = [] }) {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-10">
                           <div className="flex flex-wrap gap-2 mb-3">
-                            {current.tipo && (
+                            {current.renovacion && (
                               <span className="px-3 py-1 rounded-lg bg-primary text-white text-xs font-medium">
-                                {current.tipo}
+                                {getRenovacionLabel(current.renovacion)}
+                              </span>
+                            )}
+                            {current.tipo && (
+                              <span
+                                className={
+                                  current.renovacion
+                                    ? 'px-3 py-1 rounded-lg bg-white/20 text-white text-xs font-medium backdrop-blur-sm'
+                                    : 'px-3 py-1 rounded-lg bg-primary text-white text-xs font-medium'
+                                }
+                              >
+                                {getTipologiaLabel(current.tipo)}
                               </span>
                             )}
                             {current.materiales?.[0] && (

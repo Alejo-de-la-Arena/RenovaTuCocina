@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Layers, Ruler, Clock } from 'lucide-react';
 import Section from '@/components/ui/Section';
+import { getTipologiaLabel } from '@/lib/projectFilterLabels';
 
 /**
  * Construye ítems de materiales y decisiones a partir del proyecto.
@@ -16,7 +17,7 @@ function getMaterialItems(project) {
   if (project.tipo) {
     items.push({
       type: 'decision',
-      label: `Cocina en ${project.tipo}`,
+      label: `Tipología: ${getTipologiaLabel(project.tipo)}`,
       desc: 'Diseño adaptado al espacio disponible',
     });
   }

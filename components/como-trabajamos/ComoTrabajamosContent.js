@@ -25,13 +25,13 @@ const easing = [0.23, 1, 0.32, 1];
 const pasos = [
   {
     titulo: 'Consultá',
-    desc: 'Escribinos por WhatsApp o completá el formulario con tu proyecto. Indicá medidas aproximadas, zona y presupuesto estimado.',
+    desc: 'Nos contás tus ideas, le sumamos nuestra experiencia, juntos la mejoramos y diseñamos.',
     icon: MessageCircle,
     tag: 'Inicio',
   },
   {
     titulo: 'Visita técnica',
-    desc: 'Coordinamos una visita sin cargo para medir el espacio, ver el estado actual y entender tus necesidades.',
+    desc: 'Coordinamos una visita para medir el espacio, ver el estado actual y entender tus necesidades.',
     icon: MapPin,
     tag: 'Diagnóstico',
   },
@@ -63,7 +63,7 @@ const pasos = [
 
 const tiemposCards = [
   { icon: Clock, title: 'Renovación', text: '2 a 4 semanas según alcance.' },
-  { icon: FileText, title: 'Presupuesto', text: 'En 48-72 hs después de la visita.' },
+  { icon: FileText, title: 'Presupuesto', text: 'En 48-72 hs hábiles después de la visita.' },
   { icon: Wrench, title: 'Incluye', text: 'Diseño, fabricación e instalación.' },
 ];
 
@@ -71,7 +71,7 @@ const faqs = [
   { title: '¿En qué zonas trabajan?', content: 'Principalmente zona norte (Vicente López, San Isidro, Olivos, Martínez, Tigre, etc.) y CABA. Para otras zonas consultar.' },
   { title: '¿Cuánto tarda una renovación?', content: 'Una renovación estándar puede llevar 2-4 semanas. Una cocina desde cero, entre 4 y 6 semanas según complejidad.' },
   { title: '¿Dan presupuesto sin cargo?', content: 'Sí. Coordinamos visita técnica y te enviamos presupuesto detallado en 48-72 horas. Sin compromiso.' },
-  { title: '¿Qué materiales usan?', content: 'Melamina, MDF laqueado, compactos, cuarzo, granito, silestone. Trabajamos con distintos proveedores para adaptarnos a tu presupuesto.' },
+  { title: '¿Qué materiales usan?', content: 'Melamina, compactos, cuarzo, granito, silestone. Trabajamos con distintos proveedores para adaptarnos a tu presupuesto.' },
   { title: '¿Incluyen plomería y electricidad?', content: 'La fabricación e instalación de muebles la hacemos nosotros. Para conexiones de agua y gas trabajamos con instaladores matriculados o podemos coordinar con el tuyo.' },
   { title: '¿Cómo es el pago?', content: 'Seña al aprobar, porcentaje al iniciar fabricación y saldo al finalizar. Detalles según proyecto.' },
   { title: '¿Hacen obras y reformas?', content: 'Sí. Además de la fabricación e instalación de cocinas, realizamos obras y reformas asociadas: demoliciones menores, revestimientos, pintura, instalaciones y todo lo necesario para entregar el espacio terminado.' },

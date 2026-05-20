@@ -9,7 +9,13 @@ import ProyectosHero from '@/components/ProyectosHero';
 import { staggerContainer, staggerItem } from '@/lib/motion';
 
 export default function ProyectosPageClient({ projects }) {
-  const [filters, setFilters] = useState({ search: '', tipo: '', material: '', ano: '' });
+  const [filters, setFilters] = useState({
+    search: '',
+    renovacion: '',
+    tipologia: '',
+    material: '',
+    ano: '',
+  });
 
   const anos = useMemo(
     () => [...new Set(projects.map((p) => p.año).filter(Boolean))].sort((a, b) => b - a),
@@ -24,9 +30,11 @@ export default function ProyectosPageClient({ projects }) {
           return false;
         }
       }
-      if (filters.tipo) {
-        const tipo = filters.tipo.toLowerCase();
-        if (!String(p.tipo || '').toLowerCase().includes(tipo)) return false;
+      if (filters.renovacion) {
+        if (String(p.renovacion || '').toLowerCase() !== filters.renovacion.toLowerCase()) return false;
+      }
+      if (filters.tipologia) {
+        if (String(p.tipo || '').toLowerCase() !== filters.tipologia.toLowerCase()) return false;
       }
       if (filters.material) {
         const mat = filters.material.toLowerCase();
