@@ -15,6 +15,7 @@ import { createPortal } from 'react-dom';
 const navLinks = [
   { href: '/', label: 'Inicio' },
   { href: '/proyectos', label: 'Proyectos' },
+  { href: '/reformas', label: 'Reformas' },
   { href: '/como-trabajamos', label: 'Cómo trabajamos' },
   { href: '/contacto', label: 'Contacto' },
 ];

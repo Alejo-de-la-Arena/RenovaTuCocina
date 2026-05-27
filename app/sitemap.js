@@ -13,6 +13,7 @@ export default async function sitemap() {
     { url: BASE, lastModified: new Date() },
     { url: `${BASE}/proyectos`, lastModified: new Date() },
     ...projectUrls,
+    { url: `${BASE}/reformas`, lastModified: new Date() },
     { url: `${BASE}/como-trabajamos`, lastModified: new Date() },
     { url: `${BASE}/contacto`, lastModified: new Date() },
   ];
