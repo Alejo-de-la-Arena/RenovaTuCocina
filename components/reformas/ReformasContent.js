@@ -205,14 +205,19 @@ export default function ReformasContent() {
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             {waUrl && (
-              <Button href={waUrl} variant="whatsapp" size="lg">
+              <Button
+                href={waUrl}
+                variant="whatsapp"
+                size="lg"
+                className="w-full min-h-[52px] sm:w-64"
+              >
                 <WhatsAppIcon className="h-5 w-5 shrink-0" />
                 Consultá tu reforma
               </Button>
             )}
             <a
               href="#proyectos"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
+              className="inline-flex w-full min-h-[52px] sm:w-64 items-center justify-center gap-2 rounded-xl border border-white/30 px-6 text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
             >
               Ver proyectos
               <ArrowDown className="h-4 w-4" />
@@ -220,12 +225,6 @@ export default function ReformasContent() {
           </motion.div>
         </Container>
 
-        {/* Trust badge */}
-        <div className="absolute bottom-8 left-0 right-0 z-10">
-          <Container>
-            <p className="text-sm text-white/45">Arquitecto en cada obra · Zona Norte y CABA</p>
-          </Container>
-        </div>
       </section>
 
       {/* ── DIFFERENTIATORS ──────────────────────────────────────────────── */}
