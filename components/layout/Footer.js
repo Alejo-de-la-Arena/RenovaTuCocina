@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, WA_DISPLAY } from '@/lib/whatsapp';
 
 const HIDDEN_PREFIXES = ['/admin', '/acceso'];
 
@@ -67,7 +67,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 shrink-0 text-primary-400" />
-                11 6205-0737
+                {WA_DISPLAY}
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 shrink-0 text-primary-400" />

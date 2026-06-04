@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Clock, Mail, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ContactoForm from '@/components/contact/ContactoForm';
+import { WA_DISPLAY } from '@/lib/whatsapp';
 
 export default function ContactoPageView() {
   return (
@@ -61,7 +62,7 @@ export default function ContactoPageView() {
                       </span>
                       <div>
                         <span className="text-xs font-semibold uppercase tracking-wider text-[#8a8277]">Teléfono</span>
-                        <p className="mt-0.5 font-medium text-[#1a1612]">11 6205-0737</p>
+                        <p className="mt-0.5 font-medium text-[#1a1612]">{WA_DISPLAY}</p>
                       </div>
                     </li>
                     <li className="flex gap-4">

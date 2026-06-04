@@ -28,7 +28,7 @@ cp .env.example .env.local
 
 Editar `.env.local` y configurar:
 
-- `NEXT_PUBLIC_WA_NUMBER`: Número de WhatsApp con código de país, sin + ni espacios. Ej: `5491123456789`
+- `NEXT_PUBLIC_WA_NUMBER`: Número de WhatsApp con código de país, sin + ni espacios. Ej: `5491134401550` (se muestra como `11 3440-1550`)
 - `NEXT_PUBLIC_SITE_URL` (opcional): URL base del sitio para sitemap/robots. Ej: `https://renovatucocina.com.ar`
 
 ## Scripts
