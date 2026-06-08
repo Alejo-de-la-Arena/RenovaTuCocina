@@ -11,6 +11,11 @@ const remotePatterns = [
     hostname: 'plus.unsplash.com',
     pathname: '/**',
   },
+  {
+    protocol: 'https',
+    hostname: 'res.cloudinary.com',
+    pathname: '/**',
+  },
 ];
 
 try {

@@ -23,7 +23,7 @@ const COCINAS = [
     ],
     ideal: 'Casas o deptos con cocina integrada',
     mensaje: 'Hola, me interesa una *cocina moderna integrada* desde cero. ¿Podemos coordinar una propuesta?',
-    image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960959/Cocina_moderna_integrada_n557au.jpg',
   },
   {
     id: 'familiar',
@@ -36,7 +36,7 @@ const COCINAS = [
     ],
     ideal: 'Familias que usan mucho la cocina',
     mensaje: 'Hola, quiero cotizar una *cocina familiar completa* desde cero. ¿Qué opciones recomiendan?',
-    image: 'https://images.unsplash.com/photo-1601760561441-16420502c7e0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960965/Cocina_familiar_completa_vk82ym.png',
   },
   {
     id: 'premium',
@@ -49,7 +49,7 @@ const COCINAS = [
     ],
     ideal: 'Quienes buscan un resultado protagonista',
     mensaje: 'Hola, me gustaría diseñar una *cocina premium a medida* desde cero. ¿Podemos hablar?',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960959/Cocina_premium_a_medida_u35uux.jpg',
   },
 ];
 

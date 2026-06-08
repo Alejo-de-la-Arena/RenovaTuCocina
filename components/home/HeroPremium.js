@@ -6,7 +6,7 @@ import Container from '@/components/ui/Container';
 import TrustBar from './TrustBar';
 
 const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1665507279656-0cdec047c4ea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960965/HOME_INICIAL_wt8x4o.png';
 
 const easing = [0.25, 0.46, 0.45, 0.94];
 

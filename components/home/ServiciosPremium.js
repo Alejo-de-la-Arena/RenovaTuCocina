@@ -23,7 +23,7 @@ const SERVICIOS = [
     ],
     incluye: 'Diseño de color y montaje rápido para modernizar el espacio.',
     mensaje: 'Hola, me interesa una *Renovación Estética* para mi cocina. ¿Podrían darme más información?',
-    image: 'https://images.unsplash.com/photo-1764526612515-6b4ab2868a6e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960959/Renovaci%C3%B3n_Est%C3%A9tica_rnowvt.jpg',
   },
   {
     id: 'funcional',
@@ -38,7 +38,7 @@ const SERVICIOS = [
     ],
     incluye: 'Diseño a medida para optimizar el espacio y el almacenamiento.',
     mensaje: 'Hola, me interesa una *Renovación Funcional* para mi cocina. ¿Podrían asesorarme?',
-    image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960964/Renovaci%C3%B3n_Funcional_wpzfdn.png',
   },
   {
     id: 'integral',
@@ -52,7 +52,7 @@ const SERVICIOS = [
     ],
     incluye: 'El servicio completo de recambio de amoblamiento, sin demoliciones ni escombros.',
     mensaje: 'Hola, estoy buscando una *Renovación Integral* de cocina. ¿Podemos coordinar una visita?',
-    image: 'https://images.unsplash.com/photo-1682888818650-0a7cbb35287d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960969/Renovaci%C3%B3n_Integral_ucuo1u.png',
   },
   {
     id: 'ampliacion',
@@ -66,7 +66,7 @@ const SERVICIOS = [
     ],
     incluye: 'Proyectos de gran escala que transforman la dinámica de la casa.',
     mensaje: 'Hola, me interesa una *Renovación con Ampliación* para integrar ambientes. ¿Podrían asesorarme?',
-    image: 'https://images.unsplash.com/photo-1643034738686-d69e7bc047e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960959/Renovaci%C3%B3n_Ampliaci%C3%B3n_h9bpsp.jpg',
   },
 ];
 
