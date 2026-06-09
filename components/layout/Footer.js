@@ -35,7 +35,7 @@ export default function Footer() {
               <img
                 src="https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png"
                 alt="Renova Tu Cocina"
-                className="h-12 md:h-18 w-[200px] object-contain opacity-100 hover:opacity-100 transition-opacity"
+                className="h-12 md:h-18 w-auto object-contain opacity-100 hover:opacity-100 transition-opacity"
                 width={180}
                 height={64}
               />

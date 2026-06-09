@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, MessageCircle, X } from 'lucide-react';
-import { createPortal } from 'react-dom';
+import { Check, MessageCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
@@ -72,13 +71,7 @@ const SERVICIOS = [
 
 export default function ServiciosPremium() {
   const [selected, setSelected] = useState(SERVICIOS[0]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [portalEl, setPortalEl] = useState(null);
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl(selected.mensaje) : null;
-
-  useEffect(() => {
-    if (typeof document !== 'undefined') setPortalEl(document.body);
-  }, []);
 
   return (
     <section id="renovar" className="relative bg-premium-dark-soft py-18 md:py-30 overflow-hidden border-y border-white/10">
@@ -162,7 +155,7 @@ export default function ServiciosPremium() {
             transition={{ duration: 0.45 }}
             className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start"
           >
-            <div className="lg:col-span-2 relative aspect-[4/3] lg:aspect-square rounded-[24px] overflow-hidden border border-white/20 bg-white/[0.06] shadow-[0_24px_50px_rgba(0,0,0,0.28)]">
+            <div className="lg:col-span-3 relative aspect-[4/3] lg:aspect-square rounded-[24px] overflow-hidden border border-white/20 bg-white/[0.06] shadow-[0_24px_50px_rgba(0,0,0,0.28)]">
               <Image
                 src={selected.image}
                 alt={selected.label}
@@ -172,7 +165,7 @@ export default function ServiciosPremium() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
-            <div className="lg:col-span-3 rounded-[26px] border border-white/15 bg-[linear-gradient(135deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.04)_60%)] backdrop-blur-md p-6 md:p-10 shadow-[0_24px_55px_rgba(0,0,0,0.2)]">
+            <div className="lg:col-span-2 rounded-[26px] border border-white/15 bg-[linear-gradient(135deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.04)_60%)] backdrop-blur-md p-6 md:p-10 shadow-[0_24px_55px_rgba(0,0,0,0.2)]">
               <p className="text-white/60 text-sm font-medium uppercase tracking-wider mb-2">
                 {selected.tipo}
               </p>
@@ -195,7 +188,7 @@ export default function ServiciosPremium() {
                 <div className="flex flex-col sm:flex-row sm:items-stretch gap-3">
                   <Button
                     variant="outline"
-                    onClick={() => setIsDialogOpen(true)}
+                    href="/reformas"
                     className="w-full sm:w-auto min-h-[48px] border-white/60 text-white hover:bg-white/15"
                   >
                     Conocer más
@@ -230,86 +223,6 @@ export default function ServiciosPremium() {
           </motion.div>
         </AnimatePresence>
 
-        {portalEl &&
-          createPortal(
-            <AnimatePresence>
-              {isDialogOpen && selected.id === 'ampliacion' && (
-                <motion.div
-                  className="fixed inset-0 z-[1200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={() => setIsDialogOpen(false)}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                    transition={{ duration: 0.25 }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="w-full max-w-2xl max-h-[min(92dvh,760px)] overflow-y-auto rounded-3xl border border-white/20 bg-[#18120d] p-6 md:p-8 shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-6">
-                      <div>
-                        <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.16em]">
-                          Proyecto de gran escala
-                        </p>
-                        <h4 className="font-serif text-2xl md:text-3xl text-white mt-1">Renovación con Ampliación</h4>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => setIsDialogOpen(false)}
-                        className="rounded-full border border-white/20 p-2 text-white/80 hover:text-white hover:border-white/40 transition-colors"
-                        aria-label="Cerrar diálogo"
-                      >
-                        <X className="w-5 h-5" />
-                      </button>
-                    </div>
-
-                    <ul className="space-y-3 mb-5">
-                      <li className="flex items-start gap-3 text-white/90">
-                        <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
-                        <span>Integración: expandimos la cocina hacia otros ambientes.</span>
-                      </li>
-                      <li className="flex items-start gap-3 text-white/90">
-                        <Check className="w-5 h-5 text-primary-400 shrink-0 mt-0.5" aria-hidden />
-                        <span>Obra civil completa: demolición, plomería, electricidad, pisos, etc.</span>
-                      </li>
-                    </ul>
-
-                    <p className="text-white/75 text-sm mb-4">
-                      Tiempo estimado: <strong className="text-white">+8 semanas</strong>
-                    </p>
-                    <p className="text-white/75 mb-4">
-                      Proyectos de gran escala que transforman la dinámica de la casa.
-                    </p>
-                    <p className="text-white/70 text-sm leading-relaxed mb-6">
-                      En esta modalidad trabajamos con planificación por etapas, reuniones semanales de avance,
-                      coordinación de proveedores y control de terminaciones premium. También podemos sumar
-                      iluminación escénica, isla central multifunción y soluciones de guardado oculto para mejorar
-                      la estética y el uso diario del espacio.
-                    </p>
-
-                    <div className="flex flex-wrap gap-3">
-                      <Button onClick={() => setIsDialogOpen(false)} className="min-h-[44px]">
-                        Entendido
-                      </Button>
-                      {waUrl && (
-                        <Button
-                          href={waUrl}
-                          className="min-h-[44px] bg-white/10 hover:bg-white/20 text-white border border-white/30 shadow-none"
-                        >
-                          <MessageCircle className="w-5 h-5" />
-                          Consultar este servicio
-                        </Button>
-                      )}
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>,
-            portalEl
-          )}
       </Container>
     </section>
   );

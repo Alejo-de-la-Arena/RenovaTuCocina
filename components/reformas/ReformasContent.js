@@ -209,7 +209,7 @@ export default function ReformasContent() {
                 href={waUrl}
                 variant="whatsapp"
                 size="lg"
-                className="w-full min-h-[52px] sm:w-64"
+                className="w-full min-h-[52px] sm:w-64 text-sm md:text-base"
               >
                 <WhatsAppIcon className="h-5 w-5 shrink-0" />
                 Consultá tu reforma
@@ -217,7 +217,7 @@ export default function ReformasContent() {
             )}
             <a
               href="#proyectos"
-              className="inline-flex w-full min-h-[52px] sm:w-64 items-center justify-center gap-2 rounded-xl border border-white/30 px-6 text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
+              className="inline-flex w-full min-h-[52px] sm:w-64 items-center justify-center gap-2 rounded-xl border border-white/30 px-6 text-sm md:text-base font-medium text-white transition-all duration-200 hover:bg-white/10"
             >
               Ver proyectos
               <ArrowDown className="h-4 w-4" />
@@ -329,14 +329,14 @@ export default function ReformasContent() {
                     className="flex w-full items-center gap-3 py-5 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="shrink-0 font-mono text-xs font-semibold text-primary/50">
+                    <span className="shrink-0 font-mono text-base font-semibold text-primary/50">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <service.Icon
-                      className={`h-4 w-4 shrink-0 transition-colors duration-200 ${isOpen ? 'text-primary' : 'text-neutral-muted'}`}
+                      className={`h-5 w-5 shrink-0 transition-colors duration-200 ${isOpen ? 'text-primary' : 'text-neutral-muted'}`}
                     />
                     <span
-                      className={`flex-1 font-serif font-bold transition-colors duration-200 ${isOpen ? 'text-primary' : 'text-neutral-text'}`}
+                      className={`flex-1 text-base font-serif font-bold transition-colors duration-200 ${isOpen ? 'text-primary' : 'text-neutral-text'}`}
                     >
                       {service.title}
                     </span>

@@ -43,20 +43,20 @@ export default function HeroPremium({
       <div className="relative z-10 w-full pb-14 pt-28 md:pb-32 md:pt-40">
         <Container className="pointer-events-auto">
           <motion.div
-            className="max-w-2xl"
+            className="max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: easing }}
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 md:mb-6 leading-[1.08] tracking-tight max-w-[14ch]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 md:mb-6 leading-[1.08] tracking-tight mx-auto max-w-[14ch]">
               Transformamos tu cocina.
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 md:mb-8 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 md:mb-8 max-w-xl leading-relaxed mx-auto">
               Proyecto integral: diseño, fabricación e instalación. Resultados reales, proceso claro.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 md:mb-10">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 md:mb-10">
               {ctaRenovar}
               {ctaDesdeCero}
             </div>
