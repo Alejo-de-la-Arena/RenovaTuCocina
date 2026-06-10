@@ -153,9 +153,9 @@ export default function ServiciosPremium() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.45 }}
-            className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start"
+            className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 items-start lg:items-stretch"
           >
-            <div className="lg:col-span-3 relative aspect-[4/3] lg:aspect-square rounded-[24px] overflow-hidden border border-white/20 bg-white/[0.06] shadow-[0_24px_50px_rgba(0,0,0,0.28)]">
+            <div className="lg:col-span-3 relative aspect-[4/3] lg:aspect-auto rounded-[24px] overflow-hidden border border-white/20 bg-white/[0.06] shadow-[0_24px_50px_rgba(0,0,0,0.28)]">
               <Image
                 src={selected.image}
                 alt={selected.label}

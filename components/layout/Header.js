@@ -129,12 +129,15 @@ export default function Header() {
                 isActive={pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href))}
               />
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center">
             {waUrl ? (
               <motion.a
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm bg-whatsapp text-white shadow-soft focus-ring-whatsapp ml-2"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm bg-whatsapp text-white shadow-soft focus-ring-whatsapp"
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 24px rgba(37, 211, 102, 0.35)' }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'tween', duration: 0.2 }}
