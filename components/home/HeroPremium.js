@@ -5,8 +5,11 @@ import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import TrustBar from './TrustBar';
 
-const HERO_IMAGE =
+const HERO_IMAGE_DESKTOP =
   'https://res.cloudinary.com/dasch1s5i/image/upload/v1780960965/HOME_INICIAL_wt8x4o.png';
+
+const HERO_IMAGE_MOBILE =
+  'https://res.cloudinary.com/dasch1s5i/image/upload/v1781108813/Hero-RTC-mobile_zlxyqo.jpg';
 
 const easing = [0.25, 0.46, 0.45, 0.94];
 
@@ -25,12 +28,20 @@ export default function HeroPremium({
           className="absolute inset-0"
         >
           <Image
-            src={HERO_IMAGE}
+            src={HERO_IMAGE_MOBILE}
             alt="Cocina renovada a medida"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-center md:hidden"
+          />
+          <Image
+            src={HERO_IMAGE_DESKTOP}
+            alt="Cocina renovada a medida"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center hidden md:block"
           />
           <div
             className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/25 to-black/20"
