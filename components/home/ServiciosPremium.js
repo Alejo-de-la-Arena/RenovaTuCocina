@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, MessageCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 import { cn } from '@/lib/cn';
 
 const SERVICIOS = [
@@ -196,6 +196,7 @@ export default function ServiciosPremium() {
                   {waUrl && (
                     <Button
                       href={waUrl}
+                      onClick={trackWhatsAppContact}
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[48px] bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300"
                     >
                       <MessageCircle className="w-5 h-5" />
@@ -207,6 +208,7 @@ export default function ServiciosPremium() {
                 waUrl && (
                   <Button
                     href={waUrl}
+                    onClick={trackWhatsAppContact}
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300 min-h-[48px]"
                   >
                     <MessageCircle className="w-5 h-5" />

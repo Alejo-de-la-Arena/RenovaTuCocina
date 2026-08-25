@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
-import { hasWhatsAppConfigured, getWhatsAppUrl, WA_DISPLAY } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact, WA_DISPLAY } from '@/lib/whatsapp';
 
 const HIDDEN_PREFIXES = ['/admin', '/acceso'];
 
@@ -83,6 +83,7 @@ export default function Footer() {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppContact}
                 className="inline-flex items-center justify-center gap-1.5 w-full md:w-auto px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-whatsapp shadow-soft focus-ring-whatsapp"
                 whileHover={{ scale: 1.03, boxShadow: '0 6px 20px rgba(37, 211, 102, 0.3)' }}
                 whileTap={{ scale: 0.98 }}

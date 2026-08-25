@@ -9,7 +9,7 @@ import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { cn } from '@/lib/cn';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 
 const COCINAS = [
   {
@@ -170,6 +170,7 @@ export default function CocinaDesdeCero() {
               {waUrl ? (
                 <Button
                   href={waUrl}
+                  onClick={trackWhatsAppContact}
                   className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white"
                 >
                   <WhatsAppIcon className="w-5 h-5 shrink-0" />

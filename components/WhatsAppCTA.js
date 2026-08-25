@@ -3,7 +3,7 @@
 import Button from '@/components/ui/Button';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { cn } from '@/lib/cn';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 
 export default function WhatsAppCTA({ message = 'Hola, me gustaría consultar sobre renovación de cocinas.', size = 'md', className, label = 'WhatsApp' }) {
   const waUrl = hasWhatsAppConfigured() ? getWhatsAppUrl(message) : null;
@@ -20,6 +20,7 @@ export default function WhatsAppCTA({ message = 'Hola, me gustaría consultar so
   return (
     <Button
       href={waUrl}
+      onClick={trackWhatsAppContact}
       variant="whatsapp"
       size={size}
       className={cn('inline-flex items-center gap-2', className)}

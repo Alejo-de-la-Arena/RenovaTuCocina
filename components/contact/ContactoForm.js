@@ -15,6 +15,7 @@ import {
   buildRenovarMessage,
   buildDesdeCeroMessage,
   buildConsultaMessage,
+  trackWhatsAppContact,
 } from '@/lib/whatsapp';
 
 const MOTIVO_OPTIONS = [
@@ -316,7 +317,10 @@ export default function ContactoForm({ variant = 'home' }) {
     else message = buildConsultaMessage(form);
 
     const url = getWhatsAppUrl(message);
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    if (url) {
+      trackWhatsAppContact();
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const setMotivoAndReset = (value) => {

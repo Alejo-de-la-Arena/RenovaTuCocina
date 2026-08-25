@@ -18,7 +18,7 @@ import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import Accordion from '@/components/ui/Accordion';
-import { getWhatsAppUrl } from '@/lib/whatsapp';
+import { getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 import { fadeUp, fadeIn, staggerContainer, staggerItem } from '@/lib/motion';
 
 const WA_MESSAGE = 'Hola, me gustaría consultar sobre una reforma en mi hogar.';
@@ -207,6 +207,7 @@ export default function ReformasContent() {
             {waUrl && (
               <Button
                 href={waUrl}
+                onClick={trackWhatsAppContact}
                 variant="whatsapp"
                 size="lg"
                 className="w-full min-h-[52px] sm:w-64 text-sm md:text-base"
@@ -593,7 +594,7 @@ export default function ReformasContent() {
           </p>
           {waUrl && (
             <div className="mt-10">
-              <Button href={waUrl} variant="whatsapp" size="lg" className="px-10 py-5 text-lg">
+              <Button href={waUrl} onClick={trackWhatsAppContact} variant="whatsapp" size="lg" className="px-10 py-5 text-lg">
                 <WhatsAppIcon className="h-5 w-5 shrink-0" />
                 Empezar mi reforma
               </Button>

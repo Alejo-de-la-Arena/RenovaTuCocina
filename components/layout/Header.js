@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/cn';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 import { createPortal } from 'react-dom';
 
 const navLinks = [
@@ -137,6 +137,7 @@ export default function Header() {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppContact}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm bg-whatsapp text-white shadow-soft focus-ring-whatsapp"
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 24px rgba(37, 211, 102, 0.35)' }}
                 whileTap={{ scale: 0.98 }}
@@ -156,6 +157,7 @@ export default function Header() {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppContact}
                 className="p-2.5 rounded-xl bg-whatsapp text-white shadow-soft"
                 aria-label="WhatsApp"
               >
@@ -250,7 +252,10 @@ export default function Header() {
                           href={waUrl}
                           variant="whatsapp"
                           className="w-full inline-flex items-center justify-center gap-2 py-3.5"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          onClick={() => {
+                            trackWhatsAppContact();
+                            setIsMobileMenuOpen(false);
+                          }}
                         >
                           <WhatsAppIcon className="w-5 h-5" />
                           Escribinos por WhatsApp

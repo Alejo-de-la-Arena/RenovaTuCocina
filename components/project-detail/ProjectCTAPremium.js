@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
-import { hasWhatsAppConfigured, getWhatsAppUrl, buildProyectoSimilarMessage } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, buildProyectoSimilarMessage, trackWhatsAppContact } from '@/lib/whatsapp';
 
 export default function ProjectCTAPremium({ project }) {
   const waMessage = buildProyectoSimilarMessage(project.title);
@@ -35,6 +35,7 @@ export default function ProjectCTAPremium({ project }) {
           {waUrl && (
             <Button
               href={waUrl}
+              onClick={trackWhatsAppContact}
               className="inline-flex items-center justify-center gap-2 bg-white text-[#1b1611] hover:bg-[#f4eee5] shadow-[0_20px_40px_rgba(0,0,0,0.32)] px-8 py-4 rounded-xl font-semibold transition-all duration-400"
             >
               <WhatsAppIcon className="w-5 h-5" />

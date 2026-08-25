@@ -39,7 +39,7 @@ export default function Button({
 
   if (href && !href.startsWith('http')) {
     return (
-      <Link href={href} className={baseClasses} {...props}>
+      <Link href={href} className={baseClasses} onClick={onClick} {...props}>
         {children}
       </Link>
     );
@@ -52,6 +52,7 @@ export default function Button({
         target="_blank"
         rel="noopener noreferrer"
         className={baseClasses}
+        onClick={onClick}
         {...props}
       >
         {children}

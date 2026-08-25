@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 
 const defaultMessage = 'Hola, me gustaría pedir presupuesto para mi cocina.';
 
@@ -50,6 +50,7 @@ export default function WhatsAppFloating() {
         href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={trackWhatsAppContact}
         className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-whatsapp text-white shadow-lg hover:bg-whatsapp-hover focus-ring-whatsapp focus:ring-offset-2 transition-all duration-200 hover:scale-105 active:scale-95"
       >
         <WhatsAppIcon className="w-8 h-8 md:w-9 md:h-9" />

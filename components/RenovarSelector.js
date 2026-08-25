@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, MessageCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
-import { hasWhatsAppConfigured, getWhatsAppUrl } from '@/lib/whatsapp';
+import { hasWhatsAppConfigured, getWhatsAppUrl, trackWhatsAppContact } from '@/lib/whatsapp';
 
 const TIPOS_RENOVACION = [
   {
@@ -125,6 +125,7 @@ export default function RenovarSelector() {
               {waUrl && (
                 <Button
                   href={waUrl}
+                  onClick={trackWhatsAppContact}
                   className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white shadow-[0_0_20px_rgba(150,41,28,0.25)] hover:shadow-[0_0_28px_rgba(150,41,28,0.4)] transition-all duration-300"
                 >
                   <MessageCircle className="w-5 h-5" />
