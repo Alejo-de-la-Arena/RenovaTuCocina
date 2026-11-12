@@ -17,7 +17,7 @@ export default function AdminChrome({ children }) {
     <div className="min-h-screen bg-[#f4f2ee] text-neutral-text flex flex-col md:flex-row">
       <aside className="w-full md:w-64 shrink-0 border-b md:border-b-0 md:border-r border-neutral-border/80 bg-[#1a1816] text-white flex flex-col md:min-h-screen">
         <div className="p-6 border-b border-white/10">
-          <p className="font-serif text-lg font-semibold tracking-tight">MDV Admin</p>
+          <p className="font-serif text-lg font-semibold tracking-tight">Renová tu Cocina · Admin</p>
           <p className="text-xs text-white/55 mt-1">Renová tu Cocina</p>
         </div>
         <nav className="p-3 space-y-1 flex-1">

@@ -25,13 +25,13 @@ const greatVibes = Great_Vibes({
 
 export const metadata = {
   title: {
-    default: 'Renová Tu Cocina | MDV Proyectos',
+    default: 'Renová tu Cocina | Muebles de cocina a medida',
     template: '%s | Renová Tu Cocina',
   },
   description:
     'Diseño, fabricación e instalación de cocinas a medida. Renovación integral o cocina desde cero. Zona norte y CABA. Antes y después reales.',
-  keywords: ['cocinas', 'renovación', 'diseño', 'MDV', 'cocina a medida', 'zona norte'],
-  authors: [{ name: 'MDV Proyectos' }],
+  keywords: ['cocinas', 'renovación', 'diseño', 'cocina a medida', 'zona norte'],
+  authors: [{ name: 'Renová tu Cocina' }],
   icons: {
     icon: [{ url: 'https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png' }],
     shortcut: ['https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png'],
@@ -39,6 +39,10 @@ export const metadata = {
   },
   openGraph: {
     type: 'website',
+    title: 'Renová tu Cocina | Muebles de cocina a medida',
+  },
+  twitter: {
+    title: 'Renová tu Cocina | Muebles de cocina a medida',
   },
   other: {
     'facebook-domain-verification': 'rsvwffngehh02lzh3hsw9q616man5f',

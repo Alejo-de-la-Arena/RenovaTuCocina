@@ -125,7 +125,7 @@ const faqItems = [
   {
     title: '¿En qué se diferencia una reforma de una renovación de cocina?',
     content:
-      'Una reforma implica intervención estructural: mover paredes, modificar instalaciones, rediseñar ambientes completos. Una renovación de cocina es más acotada. Con MDV podés hacer las dos cosas, o combinarlas.',
+      'Una reforma implica intervención estructural: mover paredes, modificar instalaciones, rediseñar ambientes completos. Una renovación de cocina es más acotada. Con Renová tu Cocina podés hacer las dos cosas, o combinarlas.',
   },
   {
     title: '¿Necesito un arquitecto para hacer una reforma?',
@@ -277,7 +277,7 @@ export default function ReformasContent() {
           className="mb-12 text-center"
         >
           <h2 className="text-display-sm font-serif font-bold text-neutral-text">
-            ¿Qué incluye una reforma con MDV?
+            ¿Qué incluye una reforma con Renová tu Cocina?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-muted">
             Nos ocupamos de todo, coordinamos cada gremio, y vos solo tenés que aprobar.
@@ -537,7 +537,7 @@ export default function ReformasContent() {
                   transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className="font-serif text-xl font-medium italic leading-relaxed text-white md:text-2xl"
                 >
-                  No pensábamos que una pared podía cambiar tanto la vida en casa. MDV nos acompañó
+                  No pensábamos que una pared podía cambiar tanto la vida en casa. Renová tu Cocina nos acompañó
                   en todo, desde el primer boceto hasta el último detalle. Resultado increíble.
                 </motion.p>
 

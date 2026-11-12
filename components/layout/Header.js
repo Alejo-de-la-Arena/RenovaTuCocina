@@ -110,7 +110,7 @@ export default function Header() {
     >
       <Container>
         <nav className="flex items-center justify-between h-20 md:h-24" aria-label="Navegación principal">
-          <Link href="/" className="flex items-center shrink-0" aria-label="MDV Proyectos - Inicio">
+          <Link href="/" className="flex items-center shrink-0" aria-label="Renová tu Cocina - Inicio">
             <img
               src="https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png"
               alt="Renova Tu Cocina"

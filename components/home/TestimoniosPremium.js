@@ -23,7 +23,7 @@ const TESTIMONIOS = [
     nombre: 'Laura M.',
     zona: 'Palermo',
     proyecto: 'Diseño a medida',
-    texto: 'Diseño moderno, materiales de calidad. Recomendamos MDV.',
+    texto: 'Diseño moderno, materiales de calidad. Recomendamos Renová tu Cocina.',
     rating: 5,
   },
 ];

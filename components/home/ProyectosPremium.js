@@ -27,7 +27,7 @@ export default function ProyectosPremium({ featuredProjects = [] }) {
   const hasMultiple = list.length > 1;
   const current = list[displayedIndex] || null;
   const nextCandidate = list[index] || null;
-  const nextSrc = nextCandidate?.imagenPrincipal || nextCandidate?.galeriaDespues?.[0] || '/assets/brand/logo-mdv.webp';
+  const nextSrc = nextCandidate?.imagenPrincipal || nextCandidate?.galeriaDespues?.[0] || '/assets/brand/RTC-logo.png';
 
   useEffect(() => {
     if (!list.length) return;
@@ -146,7 +146,7 @@ export default function ProyectosPremium({ featuredProjects = [] }) {
                     >
                       <Link href={`/proyectos/${current.slug}`} className="group block h-full w-full">
                         <Image
-                          src={current.imagenPrincipal || current.galeriaDespues?.[0] || '/assets/brand/logo-mdv.webp'}
+                          src={current.imagenPrincipal || current.galeriaDespues?.[0] || '/assets/brand/RTC-logo.png'}
                           alt={current.title}
                           fill
                           sizes="(max-width: 640px) 100vw, 1200px"

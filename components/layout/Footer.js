@@ -31,7 +31,7 @@ export default function Footer() {
       <Container>
         <div className="relative z-10 py-18 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block" aria-label="MDV Proyectos - Inicio">
+            <Link href="/" className="inline-block" aria-label="Renová tu Cocina - Inicio">
               <img
                 src="https://res.cloudinary.com/dasch1s5i/image/upload/v1776964613/RTC-logo_s0br3r.png"
                 alt="Renova Tu Cocina"
@@ -100,7 +100,7 @@ export default function Footer() {
 
         <div className="relative z-10 py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/45 text-sm">
-            © {new Date().getFullYear()} MDV Proyectos. Todos los derechos reservados.
+            © {new Date().getFullYear()} Renová tu Cocina · Demaria Duarte S.R.L.
           </p>
         </div>
       </Container>

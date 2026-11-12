@@ -17,7 +17,7 @@ export default function AccesoPage() {
     <div className="min-h-screen bg-[#f4f2ee] flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-md rounded-3xl border border-neutral-border/80 bg-white p-8 md:p-10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.25)]">
         <div className="mb-8 text-center">
-          <p className="font-serif text-2xl font-semibold text-neutral-text tracking-tight">Panel MDV</p>
+          <p className="font-serif text-2xl font-semibold text-neutral-text tracking-tight">Panel Renová tu Cocina</p>
           <p className="text-sm text-neutral-muted mt-2">Acceso exclusivo para administradores</p>
         </div>
 
