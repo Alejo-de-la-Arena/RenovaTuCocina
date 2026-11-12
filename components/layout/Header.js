@@ -209,7 +209,7 @@ export default function Header() {
                 >
                   <div className="flex items-center justify-between border-b border-neutral-border/80 px-5 pt-[env(safe-area-inset-top)] pb-4">
                     <img
-                      src="/assets/brand/RTC-Logo.png"
+                      src="/assets/brand/RTC-logo.png"
                       alt="Renova Tu Cocina"
                       className="h-14 mt-4 w-auto object-contain text-neutral-text"
                       width={180}
